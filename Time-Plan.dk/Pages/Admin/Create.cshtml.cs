@@ -30,12 +30,17 @@ namespace Time_Plan.dk.Pages.Admin
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Person == null || Person == null)
+            //Person.Password = Person.LønNr.ToString();
+
+
+
+            if (!ModelState.IsValid || _context.Person == null || Person == null)
             {
                 return Page();
             }
-
+            
             _context.Person.Add(Person);
+            
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
