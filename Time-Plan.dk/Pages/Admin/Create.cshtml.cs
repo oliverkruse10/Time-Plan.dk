@@ -30,8 +30,19 @@ namespace Time_Plan.dk.Pages.Admin
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Person == null || Person == null)
+            if (!ModelState.IsValid || _context.Person == null || Person == null)
             {
+                return Page();
+            }
+
+            if (_context.Person.Any(p => p.LønNr == Person.LønNr))
+            {
+                ModelState.AddModelError("DuplicateLønNr", "Dette Løn nummer er allerede registreret");
+                return Page();
+            }
+            if (_context.Person.Any(p => p.SSN == Person.SSN))
+            {
+                ModelState.AddModelError("DuplicateSSN", "Dette CPR nummer er allerede registreret");
                 return Page();
             }
 

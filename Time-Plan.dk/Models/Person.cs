@@ -13,6 +13,8 @@ public class Person
     public bool DriversLicenseWithTrailer { get; set; }
     private string Password { get; set; }
     public int LønNr { get; set; }
+    public int SSN { get { return SocialSecurityNumber; } }
+    
 
     public int ID { get; set; }
 
