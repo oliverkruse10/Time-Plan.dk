@@ -11,8 +11,8 @@ using Time_Plan.dk.Data;
 namespace Time_Plan.dk.Migrations
 {
     [DbContext(typeof(Time_PlandkContext))]
-    [Migration("20230504101535_IntialDatabaseScripts")]
-    partial class IntialDatabaseScripts
+    [Migration("20230508103333_initialDatabaseScripts")]
+    partial class initialDatabaseScripts
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,10 +57,18 @@ namespace Time_Plan.dk.Migrations
                     b.Property<int>("LønNr")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("Role")
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SocialSecurityNumber")
                         .HasColumnType("int");
 
                     b.HasKey("ID");

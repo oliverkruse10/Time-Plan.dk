@@ -8,10 +8,10 @@ public class Person
     public string Address { get; set; }
     public int PhoneNumber { get; set; }
     public string Email { get; set; }
-    private int SocialSecurityNumber { get; set; }
+    public int SocialSecurityNumber { get; set; }
     public bool DriversLicense { get; set; }
     public bool DriversLicenseWithTrailer { get; set; }
-    private string Password { get; set; }
+    public string Password { get; set; }
     public int LønNr { get; set; }
 
     public int ID { get; set; }

@@ -54,10 +54,18 @@ namespace Time_Plan.dk.Migrations
                     b.Property<int>("LønNr")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("Role")
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SocialSecurityNumber")
                         .HasColumnType("int");
 
                     b.HasKey("ID");

@@ -5,7 +5,7 @@
 namespace Time_Plan.dk.Migrations
 {
     /// <inheritdoc />
-    public partial class IntialDatabaseScripts : Migration
+    public partial class initialDatabaseScripts : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,14 +16,16 @@ namespace Time_Plan.dk.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Role = table.Column<int>(type: "int", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SocialSecurityNumber = table.Column<int>(type: "int", nullable: false),
                     DriversLicense = table.Column<bool>(type: "bit", nullable: false),
                     DriversLicenseWithTrailer = table.Column<bool>(type: "bit", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LønNr = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
