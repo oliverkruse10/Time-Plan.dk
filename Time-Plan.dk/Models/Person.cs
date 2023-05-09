@@ -45,15 +45,7 @@ public class Person
 
     private static List<Person> employees = new List<Person>();
 
-    public void SetDefaultPassword()
-    {
-        if (this.Password != this.LønNr.ToString())
-        {
-            this.Password = this.LønNr.ToString();
-  
-        }
-       
-    }
+    
 
     public static void CreateEmployee(string firstName, string lastName, string address, int phoneNumber,
                                       string email, int socialSecurityNumber, bool driversLicense,
