@@ -29,19 +29,18 @@ namespace Time_Plan.dk.Pages.Admin
         public Person Person { get; set; } = default!;
 
 
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             Person.SetDefaultPassword();
-            
             if (!ModelState.IsValid || _context.Person == null || Person == null)
             {
-                    return Page();
+                return Page();
             }
 
             if (_context.Person.Any(p => p.LønNr == Person.LønNr))
             {
-                ModelState.AddModelError("DuplicateLønNr", "Dette lønnummer er allerede registreret");
+                ModelState.AddModelError("DuplicateLønNr", "Dette Løn nummer er allerede registreret");
                 return Page();
             }
             else if (_context.Person.Any(p => p.SocialSecurityNumber == Person.SocialSecurityNumber))
@@ -56,5 +55,5 @@ namespace Time_Plan.dk.Pages.Admin
 
             return RedirectToPage("./Index");
         }
-}
+    }
 }
