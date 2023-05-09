@@ -20,3 +20,104 @@ html {
 body {
   margin-bottom: 60px;
 }
+.white{
+    color:white;
+}
+.black {
+    color: black;
+}
+
+.btn-logud {
+    color: #FFFFFF;
+    background-color: #E01237;
+    border-color: #E01237;
+    border-radius: 8px;
+}
+
+    .btn-logud:hover,
+    .btn-logud:focus,
+    .btn-logud:active,
+    .btn-logud.active,
+    .open .dropdown-toggle.btn-logud {
+        color: #FFFFFF;
+        background-color: #DE7E7E;
+        border-color: #DE7E7E;
+    }
+
+    .btn-logud:active,
+    .btn-logud.active,
+    .open .dropdown-toggle.btn-logud {
+        background-image: none;
+    }
+
+    .btn-logud.disabled,
+    .btn-logud[disabled],
+    fieldset[disabled] .btn-logud,
+    .btn-logud.disabled:hover,
+    .btn-logud[disabled]:hover,
+    fieldset[disabled] .btn-logud:hover,
+    .btn-logud.disabled:focus,
+    .btn-logud[disabled]:focus,
+    fieldset[disabled] .btn-logud:focus,
+    .btn-logud.disabled:active,
+    .btn-logud[disabled]:active,
+    fieldset[disabled] .btn-logud:active,
+    .btn-logud.disabled.active,
+    .btn-logud[disabled].active,
+    fieldset[disabled] .btn-logud.active {
+        background-color: #E01237;
+        border-color: #E01237;
+    }
+
+    .btn-logud .badge {
+        color: #E01237;
+        background-color: #FFFFFF;
+    }
+
+
+.btn-profil {
+    color: #FFFFFF;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 8px;
+}
+
+    .btn-profil:hover,
+    .btn-profil:focus,
+    .btn-profil:active,
+    .btn-profil.active,
+    .open .dropdown-toggle.btn-profil {
+        color: #FFFFFF;
+        background-color: #64B319;
+        
+    }
+
+    .btn-profil:active,
+    .btn-profil.active,
+    .open .dropdown-toggle.btn-profil {
+        background-image: none;
+    }
+
+    .btn-profil.disabled,
+    .btn-profil[disabled],
+    fieldset[disabled] .btn-profil,
+    .btn-profil.disabled:hover,
+    .btn-profil[disabled]:hover,
+    fieldset[disabled] .btn-profil:hover,
+    .btn-profil.disabled:focus,
+    .btn-profil[disabled]:focus,
+    fieldset[disabled] .btn-profil:focus,
+    .btn-profil.disabled:active,
+    .btn-profil[disabled]:active,
+    fieldset[disabled] .btn-profil:active,
+    .btn-profil.disabled.active,
+    .btn-profil[disabled].active,
+    fieldset[disabled] .btn-profil.active {
+        background-color: #CAB167;
+       
+    }
+
+    .btn-profil .badge {
+        color: #CAB167;
+        background-color: #FFFFFF;
+    }
