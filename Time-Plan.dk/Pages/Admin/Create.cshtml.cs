@@ -38,6 +38,17 @@ namespace Time_Plan.dk.Pages.Admin
                     return Page();
             }
 
+            if (_context.Person.Any(p => p.LønNr == Person.LønNr))
+            {
+                ModelState.AddModelError("DuplicateLønNr", "Dette Løn nummer er allerede registreret");
+                return Page();
+            }
+            else if (_context.Person.Any(p => p.SocialSecurityNumber == Person.SocialSecurityNumber))
+            {
+                ModelState.AddModelError("DuplicateSSN", "Dette CPR nummer er allerede registreret");
+                return Page();
+            }
+
             _context.Person.Add(Person);
 
             await _context.SaveChangesAsync();
