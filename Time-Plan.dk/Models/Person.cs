@@ -33,6 +33,11 @@ public class Person
         LønNr = lønNr;
     }
 
+    public void SetDefaultPassword()
+    {
+        this.Password = this.LønNr.ToString();
+    }
+
     public Person()
     {
 
