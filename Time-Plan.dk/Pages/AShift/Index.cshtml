@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Shift[0].StartTime)
+                <a asp-page="./Index" asp-route-sortOrder="starttime_asc">Start tidspunkt</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Shift[0].EndTime)
+                <a asp-page="./Index" asp-route-sortOrder="endtime_asc">Slut tidspunkt</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Shift[0].TypeofJob)

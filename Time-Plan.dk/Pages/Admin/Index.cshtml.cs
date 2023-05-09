@@ -20,12 +20,30 @@ namespace Time_Plan.dk.Pages.Admin
 
         public IList<Person> Person { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.Person != null)
+            IQueryable<Person> personQuery = _context.Person;
+
+            // Applying sorting based on the sortOrder parameter
+            switch (sortOrder)
             {
-                Person = await _context.Person.ToListAsync();
+                case "firstname_desc":
+                    personQuery = personQuery.OrderByDescending(p => p.FirstName);
+                    break;
+                case "lastname_asc":
+                    personQuery = personQuery.OrderBy(p => p.LastName);
+                    break;
+                case "lastname_desc":
+                    personQuery = personQuery.OrderByDescending(p => p.LastName);
+                    break;
+                case "firstname_asc":
+                default:
+                    personQuery = personQuery.OrderBy(p => p.FirstName);
+                    break;
             }
+
+            Person = await personQuery.ToListAsync();
         }
+
     }
 }
