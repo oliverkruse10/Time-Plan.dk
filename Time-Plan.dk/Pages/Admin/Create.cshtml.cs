@@ -33,6 +33,7 @@ namespace Time_Plan.dk.Pages.Admin
         public async Task<IActionResult> OnPostAsync()
         {
             Person.SetDefaultPassword();
+
             if (!ModelState.IsValid || _context.Person == null || Person == null)
             {
                 return Page();
