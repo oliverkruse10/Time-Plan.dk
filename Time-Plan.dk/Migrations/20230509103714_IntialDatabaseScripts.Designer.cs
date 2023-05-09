@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Time_Plan.dk.Data;
 
@@ -11,9 +12,11 @@ using Time_Plan.dk.Data;
 namespace Time_Plan.dk.Migrations
 {
     [DbContext(typeof(Time_PlandkContext))]
-    partial class Time_PlandkContextModelSnapshot : ModelSnapshot
+    [Migration("20230509103714_IntialDatabaseScripts")]
+    partial class IntialDatabaseScripts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

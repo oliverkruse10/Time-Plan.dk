@@ -1,0 +1,54 @@
+﻿@page
+@model Time_Plan.dk.Pages.AShift.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift[0].StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift[0].EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift[0].TypeofJob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift[0].Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Shift) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeofJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ShiftId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ShiftId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ShiftId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
