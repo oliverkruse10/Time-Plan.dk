@@ -29,14 +29,13 @@ namespace Time_Plan.dk.Pages.Admin
         public Person Person { get; set; } = default!;
 
 
-
+        
         public async Task<IActionResult> OnPostAsync()
         {
             Person.SetDefaultPassword();
-
             if (!ModelState.IsValid || _context.Person == null || Person == null)
             {
-                return Page();
+                    return Page();
             }
 
             if (_context.Person.Any(p => p.LønNr == Person.LønNr))
@@ -49,12 +48,16 @@ namespace Time_Plan.dk.Pages.Admin
                 ModelState.AddModelError("DuplicateSSN", "Dette CPR nummer er allerede registreret");
                 return Page();
             }
+            else
+            {
+                _context.Person.Add(Person);
+                
+                await _context.SaveChangesAsync();
 
-            _context.Person.Add(Person);
+                return RedirectToPage("./Index");
+            }
 
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+           
         }
-    }
+}
 }
