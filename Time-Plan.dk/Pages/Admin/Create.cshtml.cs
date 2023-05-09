@@ -48,12 +48,16 @@ namespace Time_Plan.dk.Pages.Admin
                 ModelState.AddModelError("DuplicateSSN", "Dette CPR nummer er allerede registreret");
                 return Page();
             }
+            else
+            {
+                _context.Person.Add(Person);
+                
+                await _context.SaveChangesAsync();
 
-            _context.Person.Add(Person);
+                return RedirectToPage("./Index");
+            }
 
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+           
         }
 }
 }
