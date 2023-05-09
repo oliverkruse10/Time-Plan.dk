@@ -40,7 +40,7 @@ namespace Time_Plan.dk.Pages.Admin
 
             if (_context.Person.Any(p => p.LønNr == Person.LønNr))
             {
-                ModelState.AddModelError("DuplicateLønNr", "Dette Løn nummer er allerede registreret");
+                ModelState.AddModelError("DuplicateLønNr", "Dette lønnummer er allerede registreret");
                 return Page();
             }
             else if (_context.Person.Any(p => p.SocialSecurityNumber == Person.SocialSecurityNumber))
