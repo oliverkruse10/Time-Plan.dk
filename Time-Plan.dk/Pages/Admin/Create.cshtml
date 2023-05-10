@@ -11,61 +11,139 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        <div><table><tr><td>c1</td><td>c2</td><td>c3</td><td>c4</td><td>c5</td></tr></table></div>
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Fornavn" size="10" asp-for="Person.FirstName" />
+                                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Efternavn" size="15" asp-for="Person.LastName" />
+                                <span asp-validation-for="Person.LastName" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>c3</td>
+                        <td>Ja</td>
+                        <td>Nej</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="CPR" size="10" asp-for="Person.SocialSecurityNumber" />
+                                <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Telefonnummer" size="15" asp-for="Person.PhoneNumber" />
+                                <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>Admin</td>
+                        <td>
+                            <input type="radio" id="Ja" asp-for="Person.Role" value="Admin" />
+                            <label for="Ja"></label>
+                        </td>
+                        <td>
+                            <input type="radio" id="Nej" asp-for="Person.Role"  value="Employee" checked />
+                            <label for="Nej"></label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Adresse" size="25" asp-for="Person.Address" />
+                                <span asp-validation-for="Person.Address" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>c2</td>
+                        <td>Kørekort</td>
+                        <td>
+                            <input type="radio" id="Ja" asp-for="Person.DriversLicense" value="true" />
+                            <label for="Ja"></label>
+                        </td>
+                        <td>
+                            <input type="radio" id="Nej" asp-for="Person.DriversLicense" value="false" checked />
+                            <label for="Nej"></label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" size="25" asp-for="Person.Email" />
+                                <span asp-validation-for="Person.Email" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>c2</td>
+                        <td>Trailer</td>
+                        <td>
+                            <input type="radio" id="Ja" asp-for="Person.DriversLicenseWithTrailer" value="true" />
+                            <label for="Ja"></label>
+                        </td>
+                        <td>
+                            <input type="radio" id="Nej" asp-for="Person.DriversLicenseWithTrailer" value="false" checked />
+                            <label for="Nej"></label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Lønnr" id="Lønnr" size="12" asp-for="Person.LønNr" asp-for="Person.Password" />
+                                <span asp-validation-for="Person.LønNr" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            @*<div class="form-group">
                 <label asp-for="Person.Role" class="control-label"></label>
                 <input asp-for="Person.Role" class="form-control" />
                 <span asp-validation-for="Person.Role" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.FirstName" class="control-label"></label>
-                <input asp-for="Person.FirstName" class="form-control" />
-                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.LastName" class="control-label"></label>
-                <input asp-for="Person.LastName" class="form-control" />
-                <span asp-validation-for="Person.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.SocialSecurityNumber" class="control-label"></label>
-                <input asp-for="Person.SocialSecurityNumber" class="form-control" />
-                <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.Address" class="control-label"></label>
-                <input asp-for="Person.Address" class="form-control" />
-                <span asp-validation-for="Person.Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.PhoneNumber" class="control-label"></label>
-                <input asp-for="Person.PhoneNumber" class="form-control" />
-                <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.Email" class="control-label"></label>
-                <input asp-for="Person.Email" class="form-control" />
-                <span asp-validation-for="Person.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
+            </div>*@
+            @*<div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Person.DriversLicense" /> @Html.DisplayNameFor(model => model.Person.DriversLicense)
                 </label>
-            </div>
-            <div class="form-group form-check">
+            </div>*@
+            @*<div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Person.DriversLicenseWithTrailer" /> @Html.DisplayNameFor(model => model.Person.DriversLicenseWithTrailer)
                 </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person.LønNr" class="control-label"></label>
-                <input asp-for="Person.LønNr" asp-for="Person.Password" class="form-control" />
-                <span asp-validation-for="Person.LønNr" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            </div>*@
+
+          
             <h3 align = "center" ">@Html.ValidationMessage("DuplicateLønNr")</h3>
             <h3 align = "center" "></>@Html.ValidationMessage("DuplicateLønSSN")</h3>
         </form>
