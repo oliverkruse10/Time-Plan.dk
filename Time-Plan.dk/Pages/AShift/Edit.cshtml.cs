@@ -17,10 +17,13 @@ namespace Time_Plan.dk.Pages.AShift
         public EditModel(Time_Plan.dk.Data.Time_PlandkContext context)
         {
             _context = context;
+            GenerateEmployeeDict();
         }
 
         [BindProperty]
         public Shift Shift { get; set; } = default!;
+
+        public Dictionary<int, string> EmployeeDict { get; set; } = new Dictionary<int, string>();
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -46,8 +49,14 @@ namespace Time_Plan.dk.Pages.AShift
             {
                 return Page();
             }
-
+           
             _context.Attach(Shift).State = EntityState.Modified;
+
+            if (!EmployeeAavailable())
+            {
+                return Page();
+            }
+
 
             try
             {
@@ -71,6 +80,40 @@ namespace Time_Plan.dk.Pages.AShift
         private bool ShiftExists(int id)
         {
           return (_context.Shift?.Any(e => e.ShiftId == id)).GetValueOrDefault();
+        }
+
+
+        public void GenerateEmployeeDict()
+        {
+            EmployeeDict.Clear();
+            foreach (var employee in _context.Person)
+            {
+                EmployeeDict.Add(employee.LønNr, employee.LønNr + ": " + employee.FirstName + " " + employee.LastName);
+                EmployeeDict = EmployeeDict.OrderBy(obj => obj.Key).ToDictionary(obj => obj.Key, obj => obj.Value);
+            }
+        }
+        public bool EmployeeAavailable()
+        {
+            foreach (var shift in _context.Shift)
+            {
+                
+                if (shift.MedarbejderLønNr == Shift.MedarbejderLønNr)
+                {
+                    
+                    if (shift.StartTime < Shift.StartTime && shift.EndTime > Shift.StartTime)
+                    {
+                        ModelState.AddModelError("Planlægningsfejl", $"Medarbejderen er optaget på en vagt fra:{shift.StartTime} til {shift.EndTime} med opgaverne {shift.TypeofJob}");
+                        return false;
+                    }
+                    if (shift.StartTime < Shift.EndTime && shift.EndTime > Shift.EndTime)
+                    {
+                        ModelState.AddModelError("Planlægningsfejl", $"Medarbejderen er optaget på en vagt fra:{shift.StartTime} til {shift.EndTime} med opgaverne {shift.TypeofJob}");
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

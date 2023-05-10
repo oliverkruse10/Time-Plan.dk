@@ -14,6 +14,9 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Shift.ShiftId" />
+
+            <select asp-for="Shift.MedarbejderLønNr" class="form-select" asp-items="@(new SelectList(Model.EmployeeDict,"Key", "Value"))"><option value="Key" selected disabled>---Vælg Medarbejder---</option></select>
+
             <div class="form-group">
                 <label asp-for="Shift.StartTime" class="control-label"></label>
                 <input asp-for="Shift.StartTime" class="form-control" />
@@ -38,6 +41,9 @@
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
+
+        <h3 align="center" "></>@Html.ValidationMessage("Planlægningsfejl")</h3>
+        
     </div>
 </div>
 
