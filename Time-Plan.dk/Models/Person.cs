@@ -25,8 +25,7 @@ public class Person
     [Required(ErrorMessage = "Adresse er nødvendigt at udfylde")]
     public string Address { get; set; }
 
-
-    [Display(Name = "Telefon nummer")]
+    
     [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Venligst udfyld i korrekt format")]
     [Required(ErrorMessage = "Telefon nummer er nødvendigt at udfylde")]
     public int PhoneNumber { get; set; }
