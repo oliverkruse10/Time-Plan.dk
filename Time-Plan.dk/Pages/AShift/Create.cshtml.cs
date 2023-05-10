@@ -16,29 +16,72 @@ namespace Time_Plan.dk.Pages.AShift
         public CreateModel(Time_Plan.dk.Data.Time_PlandkContext context)
         {
             _context = context;
+            GenerateEmployeeDict();
         }
 
         public IActionResult OnGet()
         {
+            
             return Page();
         }
+        
+        public Dictionary<int, string> EmployeeDict { get; set; } = new Dictionary<int, string>();
+
 
         [BindProperty]
         public Shift Shift { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Shift == null || Shift == null)
+            if (!ModelState.IsValid || _context.Shift == null || Shift == null)
             {
                 return Page();
             }
+            
+            if (!EmployeeAavailable())
+            {
+                return Page();
+            }
+                
 
             _context.Shift.Add(Shift);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }
+
+        public bool EmployeeAavailable()
+        {
+            foreach (var shift in _context.Shift)
+            {
+                if (shift.MedarbejderLønNr == Shift.MedarbejderLønNr)
+                {
+                    if (shift.StartTime < Shift.StartTime && shift.EndTime > Shift.StartTime)
+                    {
+                        ModelState.AddModelError("Planlægningsfejl", $"Medarbejderen er optaget på en vagt fra:{shift.StartTime} til {shift.EndTime} med opgaverne {shift.TypeofJob}");
+                        return false;
+                    }
+                    if (shift.StartTime < Shift.EndTime && shift.EndTime > Shift.EndTime)
+                    {
+                        ModelState.AddModelError("Planlægningsfejl", $"Medarbejderen er optaget på en vagt fra:{shift.StartTime} til {shift.EndTime} med opgaverne {shift.TypeofJob}");
+                        return false;
+                    }
+                }
+            }
+            
+            return true;
+        }
+        
+        public void GenerateEmployeeDict()
+        {
+            EmployeeDict.Clear();
+            foreach (var employee in _context.Person)
+            {
+                EmployeeDict.Add(employee.LønNr,employee.LønNr + ": " + employee.FirstName + " " + employee.LastName);
+                EmployeeDict = EmployeeDict.OrderBy(obj => obj.Key).ToDictionary(obj => obj.Key, obj => obj.Value);
+            }
         }
     }
 }
