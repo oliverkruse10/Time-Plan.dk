@@ -16,6 +16,8 @@ public class Shift
     [Display(Name = "Adresse")]
     public string Location { get; set; }
 
+    public int? MedarbejderLønNr { get; set; }
+
     
     public Shift(int shiftId, DateTime startTime, DateTime endTime, string typeofJob, string location)
     {
