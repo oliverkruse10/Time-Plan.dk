@@ -17,10 +17,10 @@
                 @Html.DisplayNameFor(model => model.Person[0].Role)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Person[0].FirstName)
+                <a asp-page="./Index" asp-route-sortOrder="firstname_asc">Fornavn</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Person[0].LastName)
+                <a asp-page="./Index" asp-route-sortOrder="lastname_asc">Efternavn</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Person[0].Address)
@@ -40,7 +40,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Person[0].LønNr)
             </th>
-            <th></th>
+    
+            
+            
         </tr>
     </thead>
     <tbody>

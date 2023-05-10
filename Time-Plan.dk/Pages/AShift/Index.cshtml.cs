@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Time_Plan.dk.Data;
 
-namespace Time_Plan.dk.Pages.Admin
+namespace Time_Plan.dk.Pages.AShift
 {
     public class IndexModel : PageModel
     {
@@ -18,31 +18,33 @@ namespace Time_Plan.dk.Pages.Admin
             _context = context;
         }
 
-        public IList<Person> Person { get;set; } = default!;
+        public IList<Shift> Shift { get;set; } = default!;
 
         public async Task OnGetAsync(string sortOrder)
         {
-            IQueryable<Person> personQuery = _context.Person;
+            IQueryable<Shift> shiftQuery = _context.Shift;
 
             // Applying sorting based on the sortOrder parameter
             switch (sortOrder)
             {
-                case "firstname_desc":
-                    personQuery = personQuery.OrderByDescending(p => p.FirstName);
+                case "starttime_asc":
+                    shiftQuery = shiftQuery.OrderBy(s => s.StartTime);
                     break;
-                case "lastname_asc":
-                    personQuery = personQuery.OrderBy(p => p.LastName);
+                case "starttime_desc":
+                    shiftQuery = shiftQuery.OrderByDescending(s => s.StartTime);
                     break;
-                case "lastname_desc":
-                    personQuery = personQuery.OrderByDescending(p => p.LastName);
+                case "endtime_asc":
+                    shiftQuery = shiftQuery.OrderBy(s => s.EndTime);
                     break;
-                case "firstname_asc":
+                case "endtime_desc":
+                    shiftQuery = shiftQuery.OrderByDescending(s => s.EndTime);
+                    break;
                 default:
-                    personQuery = personQuery.OrderBy(p => p.FirstName);
+                    shiftQuery = shiftQuery.OrderBy(s => s.StartTime);
                     break;
             }
 
-            Person = await personQuery.ToListAsync();
+            Shift = await shiftQuery.ToListAsync();
         }
 
     }

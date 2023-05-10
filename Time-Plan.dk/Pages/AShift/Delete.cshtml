@@ -1,0 +1,45 @@
+﻿@page
+@model Time_Plan.dk.Pages.AShift.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Er du sikker på du ville slette denne vagt?</h3>
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shift.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shift.StartTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shift.EndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shift.EndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shift.TypeofJob)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shift.TypeofJob)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shift.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shift.Location)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Shift.ShiftId" />
+        <input type="submit" value="Slet" class="btn btn-danger" /> |
+        <a asp-page="./Index">Tilbage til vagt</a>
+    </form>
+</div>

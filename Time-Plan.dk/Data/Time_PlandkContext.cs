@@ -14,5 +14,7 @@ namespace Time_Plan.dk.Data
         }
 
         public DbSet<Person> Person { get; set; } = default!;
+
+        public DbSet<Shift> Shift { get; set; } = default!;
     }
 }
