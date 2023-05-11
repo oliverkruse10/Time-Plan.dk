@@ -5,9 +5,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h2>Rediger</h2>
 
-<h4>Person</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -60,7 +59,7 @@
             </div>
             <input type="hidden" asp-for="Person.ID" />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Gem" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -73,4 +72,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-xxxx

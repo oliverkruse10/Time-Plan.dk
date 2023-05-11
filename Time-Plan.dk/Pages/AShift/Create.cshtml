@@ -5,9 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Shift</h4>
+<h1>Opret vagt</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -39,16 +37,17 @@
                 <span asp-validation-for="Shift.Location" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Opret" class="btn btn-primary" />
             </div>
 
         </form>
         <h3 align="center" "></>@Html.ValidationMessage("Planlægningsfejl")</h3>
-    </div>
-</div>
+        </div>
+        </div>
+
 
 <div>
-    <a asp-page="Index">Tilbage til oversigt</a>
+    <a href="./Index">Tilbage til vagter</a>
 </div>
 
 @section Scripts {
