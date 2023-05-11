@@ -18,7 +18,7 @@ namespace Time_Plan.dk.Pages.AShift
             _context = context;
         }
 
-        public IList<Shift> Shift { get;set; } = default!;
+        public IList<Shift> Shift { get; set; } = default!;
 
         public async Task OnGetAsync(string sortOrder)
         {
@@ -46,6 +46,6 @@ namespace Time_Plan.dk.Pages.AShift
 
             Shift = await shiftQuery.ToListAsync();
         }
-
+       
     }
 }
