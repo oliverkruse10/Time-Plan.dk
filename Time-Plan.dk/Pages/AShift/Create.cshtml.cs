@@ -39,12 +39,19 @@ namespace Time_Plan.dk.Pages.AShift
             {
                 return Page();
             }
+
+           
             
             if (!EmployeeAavailable())
+                {
+                    return Page();
+                }
+            
+            if (Shift.MedarbejderLønNr == 0)
             {
-                return Page();
+                Shift.MedarbejderLønNr = null;
             }
-                
+
 
             _context.Shift.Add(Shift);
             await _context.SaveChangesAsync();
@@ -54,6 +61,10 @@ namespace Time_Plan.dk.Pages.AShift
 
         public bool EmployeeAavailable()
         {
+            if (Shift.MedarbejderLønNr == 0)
+            {
+                return true
+            }
             foreach (var shift in _context.Shift)
             {
                 if (shift.MedarbejderLønNr == Shift.MedarbejderLønNr)
@@ -73,13 +84,14 @@ namespace Time_Plan.dk.Pages.AShift
             
             return true;
         }
-        
+
         public void GenerateEmployeeDict()
         {
             EmployeeDict.Clear();
+            EmployeeDict.Add(0, "Ingen medarbejder");
             foreach (var employee in _context.Person)
             {
-                EmployeeDict.Add(employee.LønNr,employee.LønNr + ": " + employee.FirstName + " " + employee.LastName);
+                EmployeeDict.Add(employee.LønNr, employee.LønNr + ": " + employee.FirstName + " " + employee.LastName);
                 EmployeeDict = EmployeeDict.OrderBy(obj => obj.Key).ToDictionary(obj => obj.Key, obj => obj.Value);
             }
         }
