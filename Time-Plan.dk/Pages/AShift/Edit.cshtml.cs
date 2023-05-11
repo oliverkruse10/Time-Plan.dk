@@ -23,6 +23,7 @@ namespace Time_Plan.dk.Pages.AShift
         [BindProperty]
         public Shift Shift { get; set; } = default!;
 
+
         public Dictionary<int, string> EmployeeDict { get; set; } = new Dictionary<int, string>();
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -51,10 +52,16 @@ namespace Time_Plan.dk.Pages.AShift
             }
            
             _context.Attach(Shift).State = EntityState.Modified;
-
-            if (!EmployeeAavailable())
+            if (Shift.MedarbejderLønNr != 0)
             {
-                return Page();
+                if (!EmployeeAavailable())
+                {
+                    return Page();
+                }
+            }
+            if (Shift.MedarbejderLønNr == 0)
+            {
+                Shift.MedarbejderLønNr = null;
             }
 
 
@@ -86,6 +93,7 @@ namespace Time_Plan.dk.Pages.AShift
         public void GenerateEmployeeDict()
         {
             EmployeeDict.Clear();
+            EmployeeDict.Add(0, "Ingen medarbejder");
             foreach (var employee in _context.Person)
             {
                 EmployeeDict.Add(employee.LønNr, employee.LønNr + ": " + employee.FirstName + " " + employee.LastName);
