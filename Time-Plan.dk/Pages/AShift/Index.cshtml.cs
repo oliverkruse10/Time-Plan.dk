@@ -46,6 +46,14 @@ namespace Time_Plan.dk.Pages.AShift
 
             Shift = await shiftQuery.ToListAsync();
         }
-       
+
+        public string EmployeeName(int? medarbejderlønnr)
+        {
+            if (medarbejderlønnr == null)
+            {
+                return "Ingen medarbejder";
+            }
+            return _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.FirstName + " " + _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.LastName;
+        }
     }
 }

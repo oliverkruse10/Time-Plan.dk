@@ -43,8 +43,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
-            <td>
-                 
+           <td>
+                @Model.EmployeeName(item.MedarbejderLønNr)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ShiftId">Edit</a> |
