@@ -121,3 +121,14 @@ body {
         color: #CAB167;
         background-color: #FFFFFF;
     }
+
+.OversigtTabel tr:nth-child(odd) {
+    background-color: #Cab167;
+}
+
+.OversigtTabel tr:nth-child(even) {
+    background-color: #fff;
+}
+.OversigtTabel thead{
+    background-color:transparent;
+}

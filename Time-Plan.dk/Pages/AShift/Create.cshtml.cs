@@ -63,7 +63,7 @@ namespace Time_Plan.dk.Pages.AShift
         {
             if (Shift.MedarbejderLønNr == 0)
             {
-                return true
+                return true;
             }
             foreach (var shift in _context.Shift)
             {
