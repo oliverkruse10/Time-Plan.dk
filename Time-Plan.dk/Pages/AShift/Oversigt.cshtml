@@ -1,0 +1,70 @@
+﻿@page "{dato:DateTime?}"
+@model Time_Plan.dk.Pages.AShift.OversigtModel
+@{
+}
+@*
+@{
+    DateTime date = DateTime.Now;
+}
+*@
+<table class="tg">
+    <thead>
+        <tr>
+            
+            <th class="tg-lboi">
+                <form method="GetTidTilbage" asp-route-dato="@Model.date" asp-page="Oversigt">
+                   
+                    <button class="btn btn-default"><</button>
+                </form>
+                <form method="GetTidFrem" asp-for@Model.date" asp-page="Oversigt">
+                    <input type="hidden" name="handler" value="@Model.date" />
+                    <button class="btn btn-default">></button>
+                    </form>
+                
+            </th>
+            @for (int y = 0; y <= 13; y++)
+            {
+                <th class="tg-0pky">@Model.date.AddDays(y).ToString("dd/MM")</th>
+            }
+          
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Person employee in Model.Person)
+{ <tr>
+            <td class="tg-0lax">@Html.DisplayFor(modelItem => employee.FullName)</td>
+            @for (int i = 0; i <= 13; i++)
+            {
+                 <td class="tg-0lax">
+                        @if (Model.Vagt(employee.LønNr, Model.date.AddDays(i)))
+                        {
+                            <a asp-page="./Details" asp-route-id="@Model.GetShiftID(Model.date.AddDays(i),employee.LønNr)" class="btn btn-success">Vagt</a>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-danger">Ingen Vagt</button>
+                        }
+
+                    </td>
+                                    
+            }
+              
+        </tr>
+}
+        <tr>
+            <td class="tg-0lax">Ledige Vagter</td>
+            @for (int i = 0; i <= 13; i++)
+            {
+                <td class="tg-0lax">
+                    @if (Model.Vagt(null, Model.date.AddDays(i)))
+                    {
+                        <a asp-page="./Details" asp-route-id="@Model.GetShiftID(Model.date.AddDays(i),null)" class="btn btn-success">Vagt</a>
+                    }
+                   
+
+                </td>
+
+            }
+        </tr>
+    </tbody>
+</table>
