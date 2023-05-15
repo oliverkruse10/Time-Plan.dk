@@ -8,6 +8,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<Time_PlandkContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Time_PlandkContext") ?? throw new InvalidOperationException("Connection string 'Time_PlandkContext' not found.")));
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
