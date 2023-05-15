@@ -1,4 +1,5 @@
 ﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Time_Plan.dk.Pages.AShift.CreateModel
 
 @{
@@ -40,14 +41,14 @@
                 <input type="submit" value="Opret" class="btn btn-primary" />
             </div>
 
-        </form>
+        </form> 
         <h3 align="center" "></>@Html.ValidationMessage("Planlægningsfejl")</h3>
         </div>
         </div>
 
 
 <div>
-    <a href="./Index">Tilbage til vagter</a>
+    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {
