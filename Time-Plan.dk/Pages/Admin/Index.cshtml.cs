@@ -37,13 +37,24 @@ namespace Time_Plan.dk.Pages.Admin
                     personQuery = personQuery.OrderByDescending(p => p.LastName);
                     break;
                 case "firstname_asc":
-                default:
                     personQuery = personQuery.OrderBy(p => p.FirstName);
+                    break;
+                case "lønnr_desc":
+                    personQuery = personQuery.OrderByDescending(p => p.LønNr);
+                    break;
+                case "lønnr_asc":
+                    personQuery = personQuery.OrderBy(p => p.LønNr);
+                    break;
+                default:
+                    personQuery = personQuery.OrderBy(p => p.LønNr); 
                     break;
             }
 
             Person = await personQuery.ToListAsync();
         }
+
+
+     
 
     }
 }
