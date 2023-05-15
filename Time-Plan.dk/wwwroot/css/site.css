@@ -180,7 +180,10 @@ body {
 
     .tg .tg-0lax {
         text-align: center;
-        vertical-align: top
+        vertical-align: top;
+        padding:10px;
+        color: white;
+            
     }
 
 

@@ -10,49 +10,65 @@
 <table class="tg">
     <thead>
         <tr>
-            
+
             <th class="tg-lboi">
-              <table>
-                  <tr>
+                <table>
+                    <tr>
                         <td style="padding-right:5px; border:none; background-color:transparent;">
-                        <form method="GetTidTilbageAsync"><a asp-page="./Oversigt" asp-page-handler="GetTidTilbageAsync" asp-route-dato="@Service.Helper.Remove7DaysToString(Model.date)"><</a></form>
-                    </td>
+                            <form method="GetTidTilbageAsync"><a asp-page="./Oversigt" asp-page-handler="GetTidTilbageAsync" asp-route-dato="@Service.Helper.Remove7DaysToString(Model.date)"><</a></form>
+                        </td>
 
                         <td style="padding-left:5px; border:none; background-color:transparent;">
-                        <form method="GetTidFremAsync"><a asp-page="./Oversigt" asp-page-handler="GetTidFremAsync" asp-route-dato="@Service.Helper.Add7DaysToString(Model.date)">></a></form>
-                    </td>
-                  </tr>
-               </table>
+                            <form method="GetTidFremAsync"><a asp-page="./Oversigt" asp-page-handler="GetTidFremAsync" asp-route-dato="@Service.Helper.Add7DaysToString(Model.date)">></a></form>
+                        </td>
+                    </tr>
+                </table>
             </th>
             @for (int y = 0; y <= 13; y++)
             {
                 <th class="tg-0pky">@Model.date.AddDays(y).ToString("dd/MM")</th>
             }
-          
+
         </tr>
     </thead>
     <tbody>
-@foreach (Person employee in Model.Person.OrderBy(x => x.LønNr))
-{ <tr>
-            <td class="tg-0lax">@Html.DisplayFor(modelItem => employee.FullName)</td>
-            @for (int i = 0; i <= 13; i++)
-            {
-                 <td class="tg-0lax">
+        @foreach (Person employee in Model.Person.OrderBy(x => x.LønNr))
+        {
+            <tr>
+                <td class="tg-0lax" style="color:black">@Html.DisplayFor(modelItem => employee.FullName)</td>
+                @for (int i = 0; i <= 13; i++)
+                {
+                    
                         @if (Model.Vagt(employee.LønNr, Model.date.AddDays(i)))
                         {
-                            <a asp-page="./Details" asp-route-id="@Model.GetShiftID(Model.date.AddDays(i),employee.LønNr)" class="btn btn-success">Vagt</a>
+                        <td class="tg-0lax" style="background-color:green">
+                            <table style="background-color:transparent;">
+                            @foreach (var item in Model.GetShiftIDs(Model.date.AddDays(i),employee.LønNr))
+                            {
+                                <tr>
+                                        <td style=" display: inline-block; white-space: nowrap; background-color:transparent; width:95%;">
+                                            <a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:white; display:block;text-decoration:none; padding:10px;">@item.StartTime.ToString("HH"):@item.StartTime.ToString("mm")  - @item.EndTime.ToString("HH"):@item.EndTime.ToString("mm") </a> 
+                                        </td>
+                                </tr>
+                                @*<a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:black">@item.StartTime - @item.EndTime </a>*@
+                            }
+                            @*<a asp-page="./Details" asp-route-id="@Model.GetShiftID(Model.date.AddDays(i),employee.LønNr)" class="btn btn-success">Vagt</a>*@
+                            </table>
+                        </td>
                         }
                         else
                         {
-                            <button type="button" class="btn btn-danger">Ingen Vagt</button>
+                        <td class="tg-0lax" style="background-color:red">
+                            <p>Ingen Vagt</p>
+                        </td>
                         }
 
-                    </td>
-                                    
-            }
-              
-        </tr>
-}
+                    
+
+                }
+
+            </tr>
+        }
         <tr>
             <td class="tg-0lax">Ledige Vagter</td>
             @for (int i = 0; i <= 13; i++)
@@ -62,7 +78,7 @@
                     {
                         <a asp-page="./Details" asp-route-id="@Model.GetShiftID(Model.date.AddDays(i),null)" class="btn btn-success">Vagt</a>
                     }
-                   
+
 
                 </td>
 

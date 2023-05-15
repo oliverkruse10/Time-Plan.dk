@@ -18,19 +18,19 @@ namespace Time_Plan.dk.Pages.AShift
         public IList<Shift> Shift { get; set; } = default!;
         public IList<Person> Person { get; set; } = default!;
 
-        
+
         [BindProperty(SupportsGet = true)]
         public DateTime date { get; set; }
         [BindProperty(SupportsGet = true)]
         public string? dato { get; set; }
 
-        
-        
+
+
 
 
         public string EmployeeName(int? medarbejderlønnr)
         {
-           
+
             return _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.FullName ?? "Ingen medarbejder";
         }
         public async Task<IActionResult> GetTidFremAsync(string dato)
@@ -41,7 +41,7 @@ namespace Time_Plan.dk.Pages.AShift
             return Page();
         }
 
-       
+
         public async Task<IActionResult> GetTidTilbageAsync(string dato)
         {
             Shift = await _context.Shift.ToListAsync();
@@ -73,7 +73,7 @@ namespace Time_Plan.dk.Pages.AShift
             }
             return false;
         }
-        
+
         public int? GetShiftID(DateTime tid, int? medarbejdernr)
         {
 
@@ -85,8 +85,21 @@ namespace Time_Plan.dk.Pages.AShift
             return null;
         }
 
+        public List<Shift> GetShiftIDs(DateTime tid, int? medarbejdernr)
+        {
+            if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && (( e.StartTime.Date == tid.Date) || (e.StartTime <= tid && e.EndTime >= tid)) )!= null)
+            {
+                List<Shift> shiftlist = new List<Shift>();
+                foreach (Shift shift in Shift)
+                {
+                    shiftlist = Shift.Where(e => e.MedarbejderLønNr == medarbejdernr && ((e.StartTime.Date == tid.Date) || (e.StartTime.Date <= tid.Date && e.EndTime >= tid.Date ))).ToList();
+                }
+                return shiftlist;
+
+            }
+            return null;
 
 
-        
+        }
     }
 }
