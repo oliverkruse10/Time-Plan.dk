@@ -91,7 +91,7 @@ namespace Time_Plan.dk.Pages.AShift
             EmployeeDict.Add(0, "Ingen medarbejder");
             foreach (var employee in _context.Person)
             {
-                EmployeeDict.Add(employee.LønNr, employee.LønNr + ": " + employee.FirstName + " " + employee.LastName);
+                EmployeeDict.Add(employee.LønNr, employee.LønNr + ": " + employee.FullName);
                 EmployeeDict = EmployeeDict.OrderBy(obj => obj.Key).ToDictionary(obj => obj.Key, obj => obj.Value);
             }
         }

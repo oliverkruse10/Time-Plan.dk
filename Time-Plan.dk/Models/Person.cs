@@ -53,6 +53,11 @@ public class Person
 
     public int ID { get; set; }
 
+    public string FullName
+    {
+        get { return FirstName + " " + LastName; }
+    }
+
     public Person(string role, string firstName, string lastName, string address, int phoneNumber,
                   string email, int socialSecurityNumber, bool driversLicense, bool driversLicenseWithTrailer,
                   string password, int lønNr)
