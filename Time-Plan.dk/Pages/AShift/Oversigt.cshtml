@@ -1,4 +1,4 @@
-﻿@page "{dato:DateTime?}"
+﻿@page "{dato?}"
 @model Time_Plan.dk.Pages.AShift.OversigtModel
 @{
 }
@@ -12,15 +12,17 @@
         <tr>
             
             <th class="tg-lboi">
-                <form method="GetTidTilbage" asp-route-dato="@Model.date" asp-page="Oversigt">
-                   
-                    <button class="btn btn-default"><</button>
-                </form>
-                <form method="GetTidFrem" asp-for@Model.date" asp-page="Oversigt">
-                    <input type="hidden" name="handler" value="@Model.date" />
-                    <button class="btn btn-default">></button>
-                    </form>
-                
+              <table>
+                  <tr>
+                        <td style="padding-right:5px; border:none; background-color:transparent;">
+                        <form method="GetTidTilbageAsync"><a asp-page="./Oversigt" asp-page-handler="GetTidTilbageAsync" asp-route-dato="@Service.Helper.Remove7DaysToString(Model.date)"><</a></form>
+                    </td>
+
+                        <td style="padding-left:5px; border:none; background-color:transparent;">
+                        <form method="GetTidFremAsync"><a asp-page="./Oversigt" asp-page-handler="GetTidFremAsync" asp-route-dato="@Service.Helper.Add7DaysToString(Model.date)">></a></form>
+                    </td>
+                  </tr>
+               </table>
             </th>
             @for (int y = 0; y <= 13; y++)
             {
@@ -30,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (Person employee in Model.Person)
+@foreach (Person employee in Model.Person.OrderBy(x => x.LønNr))
 { <tr>
             <td class="tg-0lax">@Html.DisplayFor(modelItem => employee.FullName)</td>
             @for (int i = 0; i <= 13; i++)
@@ -68,3 +70,4 @@
         </tr>
     </tbody>
 </table>
+<a href="./Index">Vis Liste format</a>

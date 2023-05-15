@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Text;
 
 namespace Time_Plan.dk.Pages.AShift
 {
@@ -19,42 +20,48 @@ namespace Time_Plan.dk.Pages.AShift
 
         
         [BindProperty(SupportsGet = true)]
-        public DateTime date { get; set; } = DateTime.Now;
+        public DateTime date { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? dato { get; set; }
 
-        public DateTime datePH { get; set; }
+        
+        
 
 
         public string EmployeeName(int? medarbejderlønnr)
         {
-            if (medarbejderlønnr == null)
-            {
-                return "Ingen medarbejder";
-            }
-            return _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.FirstName + " " + _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.LastName;
+           
+            return _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.FullName ?? "Ingen medarbejder";
         }
-        
-        public async Task<IActionResult> OnGetTidTilbage(DateTime dato)
+        public async Task<IActionResult> GetTidFremAsync(string dato)
         {
             Shift = await _context.Shift.ToListAsync();
             Person = await _context.Person.ToListAsync();
-            datePH = dato - TimeSpan.FromDays(7);
-            date = datePH;
-            return Page();
-        }
-        public async Task<IActionResult> OnTidFrem(DateTime dato)
-        {
-            Shift = await _context.Shift.ToListAsync();
-            Person = await _context.Person.ToListAsync();
-            datePH = dato.AddDays(7);
-            date = datePH;
+            date = Service.Helper.StringToDate(dato);
             return Page();
         }
 
-        public async Task<IActionResult> OnGetAsync()
+       
+        public async Task<IActionResult> GetTidTilbageAsync(string dato)
         {
             Shift = await _context.Shift.ToListAsync();
             Person = await _context.Person.ToListAsync();
-            
+            date = Service.Helper.StringToDate(dato);
+            return Page();
+        }
+
+        public async Task<IActionResult> OnGetAsync(string? dato)
+        {
+            Shift = await _context.Shift.ToListAsync();
+            Person = await _context.Person.ToListAsync();
+            if (dato != null)
+            {
+                date = Service.Helper.StringToDate(dato);
+            }
+            if (date == default)
+            {
+                date = DateTime.Now;
+            }
             return Page();
         }
 
@@ -77,8 +84,9 @@ namespace Time_Plan.dk.Pages.AShift
             }
             return null;
         }
-        
-        
 
+
+
+        
     }
 }
