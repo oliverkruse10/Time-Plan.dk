@@ -87,12 +87,12 @@ namespace Time_Plan.dk.Pages.AShift
 
         public List<Shift> GetShiftIDs(DateTime tid, int? medarbejdernr)
         {
-            if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && (( e.StartTime.Date == tid.Date) || (e.StartTime <= tid && e.EndTime >= tid)) )!= null)
+            if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && ( e.StartTime.Date == tid.Date))!= null)
             {
                 List<Shift> shiftlist = new List<Shift>();
                 foreach (Shift shift in Shift)
                 {
-                    shiftlist = Shift.Where(e => e.MedarbejderLønNr == medarbejdernr && ((e.StartTime.Date == tid.Date) || (e.StartTime.Date <= tid.Date && e.EndTime >= tid.Date ))).ToList();
+                    shiftlist = Shift.Where(e => e.MedarbejderLønNr == medarbejdernr && (e.StartTime.Date == tid.Date)).ToList();
                 }
                 return shiftlist;
 
