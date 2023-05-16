@@ -1,7 +1,7 @@
 ﻿@page 
 @model LoginModel
 
-<h1>Login</h1>
+@*<h1>Login</h1>
 
 <form method="post">
     <div>
@@ -13,4 +13,27 @@
         <input type="password" id="password" name="password" required />
     </div>
     <button type="submit">Login</button>
-</form>
+</form>*@
+
+
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="post" action="/Login">
+        <div>
+            <label for="lønnr">Lønnr:</label>
+            <input type="text" id="lønnr" name="lønnr" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</body>
+</html>
