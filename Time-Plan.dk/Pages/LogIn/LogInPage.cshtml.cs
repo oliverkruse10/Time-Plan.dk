@@ -27,9 +27,9 @@ public class LoginModel : PageModel
     {
     }
 
-    public async Task<IActionResult> OnPost(int lønNr, string password)
+    public async Task<IActionResult> OnPostAsync()
     {
-        if (_context.Person.FirstOrDefault(e => e.LønNr == lønNr && e.Password == password) != null)
+        if (_context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password == Password) != null)
         {
             ViewData["Message"] = "There is a match";
             return Page();
@@ -42,17 +42,7 @@ public class LoginModel : PageModel
     }
 
 
-    //    if (person != null && person.Password == password)
-    //{
-
-    //    return RedirectToPage("/Index");
-    //}
-    //else
-    //{
-
-    //    ModelState.AddModelError(string.Empty, "Invalid username or password.");
-    //    return Page();
-    //}
+    
 }
 
 //public IActionResult OnPost(string username, string password)
