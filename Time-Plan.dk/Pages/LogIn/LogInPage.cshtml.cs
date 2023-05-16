@@ -31,7 +31,12 @@ public class LoginModel : PageModel
     {
         if (_context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password == Password) != null)
         {
-            ViewData["Message"] = "There is a match";
+            ViewData["Message"] = LønNr + Password;
+            return Page();
+        }
+        else if(_context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password != Password) != null)
+        {
+            ViewData["Message"] = "Forkert password";
             return Page();
         }
         else
