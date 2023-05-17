@@ -61,7 +61,7 @@ public class IndexModel : PageModel
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
-            return RedirectToPage("/AShift/Index");
+            return RedirectToPage("/AShift/Oversigt");
         }
         else
         {

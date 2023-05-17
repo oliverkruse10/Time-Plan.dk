@@ -22,10 +22,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddRazorPages(options =>
 {
     // Add authorization options
-    options.Conventions.AuthorizeFolder("/Admin/Index");
-    options.Conventions.AuthorizeFolder("/Admin/Create");
-    options.Conventions.AuthorizeFolder("/AShift/Oversigt");
-    options.Conventions.AuthorizeFolder("/Ashift/Create");
+    options.Conventions.AuthorizePage("/Admin/Index");
+    options.Conventions.AuthorizePage("/Admin/Create");
+    options.Conventions.AuthorizePage("/AShift/Oversigt");
+    options.Conventions.AuthorizePage("/Ashift/Create");
+    options.Conventions.AuthorizePage("/Admin/Edit");
+    options.Conventions.AuthorizePage("/Admin/Delete");
+    options.Conventions.AuthorizePage("/AShift/Index");
+    options.Conventions.AuthorizePage("/AShift/Edit");
+    options.Conventions.AuthorizePage("/AShift/Delete");
 
 });
 
