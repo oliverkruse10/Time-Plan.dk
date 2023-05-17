@@ -9,69 +9,74 @@
     <link rel="stylesheet" href="~/Time_Plan.dk.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #cab167;">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index"><table><tr><td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td></tr><tr><td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td></tr></table></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1 justify-content-center" style="font-size:20px;">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vagt</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/AShift/Oversigt">Oversigt</a></li>
-                                <li><a class="dropdown-item" href="/AShift/Create">Opret Vagt</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Medarbejder</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
-                                <li><a class="dropdown-item" href="/Admin/Create">Opret Medarbejder</a></li>
-                               
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
-                                <li><a class="dropdown-item" href="/Admin/Create">Opret Tidsregistrering</a></li>
-
-
-                            </ul>
-                        </li>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #cab167;">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        <table>
+                            <tr>
+                                <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
+                            </tr>
+                        </table>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1 justify-content-center" style="font-size:20px;">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vagt</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/AShift/Oversigt">Oversigt</a></li>
+                                    <li><a class="dropdown-item" href="/AShift/Create">Opret Vagt</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Medarbejder</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
+                                    <li><a class="dropdown-item" href="/Admin/Create">Opret Medarbejder</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
+                                    <li><a class="dropdown-item" href="/Admin/Create">Opret Tidsregistrering</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                         <div class="login-bar">
-                            <a href="/LogIn/LogInPage" class="login-link">Log In</a>
+                            <span class="navbar-text" style="margin-right: 10px;">You are logged in</span>
+                            <a href="/LogOut/LogOutPage" class="login-link">Log Out</a>
+
                         </div>
-                       
-                    </ul>
+                    </div>
                 </div>
-                <div class="navbar-brand justify-content-end" asp-area="" asp-page="/logout"><button class="btn-profil" type="button">Thue</button></div>
-                <div class="navbar-brand justify-content-end" asp-area="" asp-page="/logout"><button class="btn-logud" type="button"><span style="font-weight: bold">Log ud</span></button></div>
-               
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
+    }
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    
+
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark " style="background-color:#cab167;">
         <div class="container-fluid justify-content-end">
-            <a class="navbar-brand" style="font-size:16px;color: black;" href="mailto:"support@time-plan.dk">Support@time-plan.dk</a>
+            <a class="navbar-brand" style="font-size:16px;color: black;" href="mailto:support@time-plan.dk">support@time-plan.dk</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-           
         </div>
     </nav>
-   
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
