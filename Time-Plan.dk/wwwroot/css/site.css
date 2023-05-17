@@ -212,3 +212,12 @@ body {
 .incorrect-input-danger {
     font-size: 0.75vw;
 }
+
+
+
+.kalendertabel {
+    display: inline-block;
+    white-space: nowrap;
+    background-color: transparent;
+    width: 95%;
+}

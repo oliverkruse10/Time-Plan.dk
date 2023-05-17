@@ -45,14 +45,46 @@
                             <table style="background-color:transparent;">
                             @foreach (var item in Model.GetShiftIDs(Model.date.AddDays(i),employee.LønNr))
                             {
-                                <tr>
-                                        <td style=" display: inline-block; white-space: nowrap; background-color:transparent; width:95%;">
-                                            <a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:white; display:block;text-decoration:none; padding:10px;">@item.StartTime.ToString("HH"):@item.StartTime.ToString("mm")  - @item.EndTime.ToString("HH"):@item.EndTime.ToString("mm") </a> 
-                                        </td>
-                                </tr>
-                                @*<a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:black">@item.StartTime - @item.EndTime </a>*@
+                                @if(item.StartTime.Date == item.EndTime.Date)
+                                    {
+                                        <tr>
+                                            <td style=" display: inline-block; white-space: nowrap; background-color:transparent; width:95%;">
+                                                <a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:white; display:block;text-decoration:none; padding:10px;">@item.StartTime.ToString("HH"):@item.StartTime.ToString("mm")  - @item.EndTime.ToString("HH"):@item.EndTime.ToString("mm") </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else if(item.EndTime.Date == Model.date.AddDays(i).Date)
+                                    {
+                                        <tr>
+                                            <td style=" display: inline-block; white-space: nowrap; background-color:transparent; width:95%;">
+                                                <a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:white; display:block;text-decoration:none; padding:10px;"> @item.StartTime.Date.ToString("dd/MM") - @item.EndTime.ToString("dd/MM") </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else if (item.StartTime.Date != item.EndTime.Date)
+                                    {
+                                        if (item.StartTime.Date != Model.date.AddDays(i).Date && item.StartTime.Date != Model.date.AddDays(i).Date)
+                                        {
+                                            <tr>
+                                                <td style=" display: inline-block; white-space: nowrap; display:block; background-color:transparent;">
+                                                    <a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:white; display:block;text-decoration:none; padding:10px;">&nbsp; </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td style=" display: inline-block; white-space: nowrap; background-color:transparent; width:95%;">
+                                                    <a asp-page="./Details" asp-route-id="@item.ShiftId" style="color:white; display:block;text-decoration:none; padding:10px;"> @item.StartTime.Date.ToString("dd/MM") - @item.EndTime.ToString("dd/MM") </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                       
+                                    }
+                                   
+                               
                             }
-                            @*<a asp-page="./Details" asp-route-id="@Model.GetShiftID(Model.date.AddDays(i),employee.LønNr)" class="btn btn-success">Vagt</a>*@
+                            
                             </table>
                         </td>
                         }
