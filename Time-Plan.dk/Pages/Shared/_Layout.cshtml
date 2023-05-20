@@ -11,56 +11,114 @@
 <body>
     @if (User.Identity.IsAuthenticated)
     {
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #cab167;">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">
-                        <table>
-                            <tr>
-                                <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
-                            </tr>
-                        </table>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1 justify-content-center" style="font-size:20px;">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vagt</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/AShift/Oversigt">Oversigt</a></li>
-                                    <li><a class="dropdown-item" href="/AShift/Create">Opret Vagt</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Medarbejder</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
-                                    <li><a class="dropdown-item" href="/Admin/Create">Opret Medarbejder</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
-                                    <li><a class="dropdown-item" href="/Admin/Create">Opret Tidsregistrering</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="login-bar">
-                            <span class="navbar-text" style="margin-right: 10px;">You are logged in</span>
-                            <a href="/LogOut/LogOutPage" class="login-link">Log Out</a>
+        @if (User.IsInRole("Admin"))
+        {
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #cab167;">
+                    <div class="container">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">
+                            <table>
+                                <tr>
+                                    <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
+                                </tr>
+                            </table>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1 justify-content-center" style="font-size:20px;">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vagt</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/AShift/Oversigt">Oversigt</a></li>
+                                        <li><a class="dropdown-item" href="/AShift/Create">Opret Vagt</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Medarbejder</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
+                                        <li><a class="dropdown-item" href="/Admin/Create">Opret Medarbejder</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
+                                        <li><a class="dropdown-item" href="/Admin/Create">Opret Tidsregistrering</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="login-bar">
+                                <span class="navbar-text" style="margin-right: 10px;">Du er logget ind</span>
+                                <a href="/LogOut/LogOutPage" class="login-link">Log ud</a>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </nav>
-        </header>
+                </nav>
+            </header>
+        }
+        else
+        {
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #cab167;">
+                    <div class="container">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">
+                            <table>
+                                <tr>
+                                    <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
+                                </tr>
+                            </table>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1 justify-content-center" style="font-size:20px;">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vagt</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/AShift/Oversigt">Oversigt</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Medarbejder</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
+                                        <li><a class="dropdown-item" href="/Admin/Create">Opret Tidsregistrering</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="login-bar">
+                                <span class="navbar-text" style="margin-right: 10px;">Du er logget ind</span>
+                                <a href="/LogOut/LogOutPage" class="login-link">Log ud</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        }
+
+        
     }
 
     <div class="container">

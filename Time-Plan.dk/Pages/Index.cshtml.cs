@@ -23,6 +23,9 @@ public class IndexModel : PageModel
     [BindProperty]
     public string Password { get; set; }
 
+    [BindProperty]
+    public int Role { get; set; }
+
 
     public async Task<IActionResult> OnGet()
     {
@@ -41,22 +44,26 @@ public class IndexModel : PageModel
 
 
 
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostAsync(string Role)
     {
-        var user = _context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password == Password);
+        var user = _context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password == Password && e.Role == Role);
 
         if (user != null)
         {
             var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.LønNr.ToString()),
-
+            new Claim(ClaimTypes.Name, user.LønNr.ToString())
         };
+
+            if (user.Role == "Admin")
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+            }
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
             {
-                IsPersistent = false,
+                IsPersistent = false
             };
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
@@ -65,10 +72,12 @@ public class IndexModel : PageModel
         }
         else
         {
-            ViewData["Message"] = "Forkert løn nummer eller password";
+            ViewData["Message"] = "Forkert løn nummer, password eller rolle";
             return Page();
         }
     }
+
+
 
 
 
