@@ -40,8 +40,12 @@ namespace Time_Plan.dk.Pages.AShift
                 return Page();
             }
 
-           
-            
+            if (Shift.EndTime <= Shift.StartTime)
+            {
+                ModelState.AddModelError("erroneoustime", "Sluttid kan ikke være før starttid");
+                return Page();
+            }
+
             if (!EmployeeAavailable())
                 {
                     return Page();

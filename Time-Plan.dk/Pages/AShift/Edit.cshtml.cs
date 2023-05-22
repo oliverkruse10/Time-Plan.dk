@@ -50,8 +50,16 @@ namespace Time_Plan.dk.Pages.AShift
             {
                 return Page();
             }
+
            
             _context.Attach(Shift).State = EntityState.Modified;
+
+            if (Shift.EndTime <= Shift.StartTime)
+            {
+                ModelState.AddModelError("erroneoustime", "Sluttid kan ikke være før starttid");
+                return Page();
+            }
+
             if (Shift.MedarbejderLønNr != 0)
             {
                 if (!EmployeeAavailable())
