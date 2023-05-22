@@ -44,9 +44,9 @@ public class IndexModel : PageModel
 
 
 
-    public async Task<IActionResult> OnPostAsync(string Role)
+    public async Task<IActionResult> OnPostAsync()
     {
-        var user = _context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password == Password && e.Role == Role);
+        var user = _context.Person.FirstOrDefault(e => e.LønNr == LønNr && e.Password == Password);
 
         if (user != null)
         {

@@ -7,36 +7,76 @@
 
 <h2>Detaljer</h2>
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Shift.StartTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shift.StartTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Shift.EndTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shift.EndTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Shift.TypeofJob)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shift.TypeofJob)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Shift.Location)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shift.Location)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Shift?.ShiftId">Rediger</a> |
-    <a asp-page="./Index">Tilbage til oversigt</a>
-</div>
+@if (User.IsInRole("Admin"))
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.StartTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.StartTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.EndTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.EndTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.TypeofJob)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.TypeofJob)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.Location)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.Location)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Shift?.ShiftId">Rediger</a> |
+        <a asp-page="./Oversigt">Tilbage til oversigt</a>
+    </div>
+}
+else
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.StartTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.StartTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.EndTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.EndTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.TypeofJob)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.TypeofJob)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Shift.Location)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shift.Location)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        
+        <a asp-page="./Oversigt">Tilbage til oversigt</a>
+    </div>
+}
+
