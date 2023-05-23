@@ -30,33 +30,35 @@ namespace Time_Plan.dk.Service
         }
         public static string Add7DaysToString(DateTime dt)
         {
-            int i = dt.Day + 7;
+            DateTime nydt = dt.AddDays(7);
+            int i = nydt.Day;
             StringBuilder sb = new StringBuilder();
             if (i < 10)
                 sb.Append("0");
             sb.Append(i);
             sb.Append("-");
-            if (dt.Month < 10)
+            if (nydt.Month < 10)
                 sb.Append("0");
-            sb.Append(dt.Month);
+            sb.Append(nydt.Month);
             sb.Append("-");
-            sb.Append(dt.Year);
+            sb.Append(nydt.Year);
             return sb.ToString();
         }
 
         public static string Remove7DaysToString(DateTime dt)
         {
-            int i = dt.Day - 7;
+            DateTime nydt = dt.AddDays(-7);
+            int i = nydt.Day;
             StringBuilder sb = new StringBuilder();
             if (i < 10)
                 sb.Append("0");
             sb.Append(i);
             sb.Append("-");
-            if (dt.Month < 10)
+            if (nydt.Month < 10)
                 sb.Append("0");
-            sb.Append(dt.Month);
+            sb.Append(nydt.Month);
             sb.Append("-");
-            sb.Append(dt.Year);
+            sb.Append(nydt.Year);
             return sb.ToString();
         }
     }
