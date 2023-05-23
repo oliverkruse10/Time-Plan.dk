@@ -76,7 +76,7 @@ namespace Time_Plan.dk.Pages.AShift
         public int? GetShiftID(DateTime tid, int? medarbejdernr)
         {
 
-            if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == tid.Date) != null)
+            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == tid.Date) != null)
             {
                 Shift? medarbejdervagt = (Shift)Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == tid.Date);
                 return medarbejdervagt.ShiftId;
