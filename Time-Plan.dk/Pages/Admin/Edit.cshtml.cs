@@ -22,6 +22,7 @@ namespace Time_Plan.dk.Pages.Admin
         {
             _context = context;
         }
+       public int SSN;
 
         [BindProperty]
         public Person Person { get; set; } = default!;
@@ -46,6 +47,7 @@ namespace Time_Plan.dk.Pages.Admin
             {
                 return NotFound();
             }
+            SSN = person.SocialSecurityNumber;
             Person = person;
             return Page();
         }
@@ -54,6 +56,7 @@ namespace Time_Plan.dk.Pages.Admin
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Person.SocialSecurityNumber = SSN;
             if (!ModelState.IsValid)
             {
                 return Page();

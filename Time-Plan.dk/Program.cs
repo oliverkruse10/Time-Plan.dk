@@ -18,11 +18,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 {
     options.LoginPath = "/LogIn/LogInPage";
 });
-builder.Services.ConfigureApplicationCookie(opts =>
-{
-    opts.AccessDeniedPath = "/Account/AccesDenied";
-});
-
 builder.Services.AddRazorPages(options =>
 {
     // Add authorization options
