@@ -30,8 +30,7 @@ namespace Time_Plan.dk.Pages.AShift
 
         public string EmployeeName(int? medarbejderlønnr)
         {
-
-            return _context.Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.FullName ?? "Ingen medarbejder";
+            return Person.FirstOrDefault(e => e.LønNr == medarbejderlønnr)?.FullName ?? "Ingen medarbejder";
         }
         public async Task<IActionResult> GetTidFremAsync(string dato)
         {
@@ -67,7 +66,7 @@ namespace Time_Plan.dk.Pages.AShift
 
         public bool Vagt(int? medarbejdernr, DateTime kontroltid)
         {
-            if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == kontroltid.Date) != null)
+            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == kontroltid.Date) != null)
             {
                 return true;
             }
@@ -79,7 +78,7 @@ namespace Time_Plan.dk.Pages.AShift
 
             if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == tid.Date) != null)
             {
-                Shift? medarbejdervagt = (Shift)_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == tid.Date);
+                Shift? medarbejdervagt = (Shift)Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == tid.Date);
                 return medarbejdervagt.ShiftId;
             }
             return null;
@@ -87,7 +86,7 @@ namespace Time_Plan.dk.Pages.AShift
 
         public List<Shift> GetShiftIDs(DateTime tid, int? medarbejdernr)
         {
-            if (_context.Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && ( e.StartTime.Date == tid.Date))!= null)
+            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && ( e.StartTime.Date == tid.Date))!= null)
             {
                 List<Shift> shiftlist = new List<Shift>();
                 foreach (Shift shift in Shift)
