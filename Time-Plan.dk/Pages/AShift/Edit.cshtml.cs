@@ -92,7 +92,7 @@ namespace Time_Plan.dk.Pages.AShift
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Oversigt");
         }
 
         private bool ShiftExists(int id)

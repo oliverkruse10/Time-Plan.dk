@@ -63,7 +63,7 @@ namespace Time_Plan.dk.Pages.AShift
             _context.Shift.Add(Shift);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Oversigt");
         }
 
         public bool EmployeeAavailable()

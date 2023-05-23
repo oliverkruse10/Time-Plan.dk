@@ -39,6 +39,7 @@
         </dl>
     </div>
     <div>
+        <a asp-page="./Delete" asp-route-id="@Model.Shift?.ShiftId">Slet</a>  |
         <a asp-page="./Edit" asp-route-id="@Model.Shift?.ShiftId">Rediger</a> |
         <a asp-page="./Oversigt">Tilbage til oversigt</a>
     </div>
@@ -74,6 +75,7 @@ else
             </dd>
         </dl>
     </div>
+    
     <div>
         
         <a asp-page="./Oversigt">Tilbage til oversigt</a>

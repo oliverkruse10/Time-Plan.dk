@@ -59,7 +59,7 @@ namespace Time_Plan.dk.Pages.AShift
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Oversigt");
         }
     }
 }
