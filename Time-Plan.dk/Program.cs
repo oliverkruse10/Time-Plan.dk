@@ -18,7 +18,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 {
     options.LoginPath = "/LogIn/LogInPage";
 });
-
 builder.Services.AddRazorPages(options =>
 {
     // Add authorization options

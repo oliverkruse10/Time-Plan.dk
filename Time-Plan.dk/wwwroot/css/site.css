@@ -113,12 +113,11 @@ body {
     .btn-profil.disabled.active,
     .btn-profil[disabled].active,
     fieldset[disabled] .btn-profil.active {
-        background-color: #CAB167;
-       
+        background-color: #e3ae45;
     }
 
     .btn-profil .badge {
-        color: #CAB167;
+        color: #e3ae45;
         background-color: #FFFFFF;
     }
 

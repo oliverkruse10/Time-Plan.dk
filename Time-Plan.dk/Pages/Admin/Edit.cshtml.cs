@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ using Time_Plan.dk.Data;
 
 namespace Time_Plan.dk.Pages.Admin
 {
-    [Authorize(Roles = "Admin")]
+    
     public class EditModel : PageModel
     {
         private readonly Time_Plan.dk.Data.Time_PlandkContext _context;
@@ -21,6 +22,7 @@ namespace Time_Plan.dk.Pages.Admin
         {
             _context = context;
         }
+       public int SSN;
 
         [BindProperty]
         public Person Person { get; set; } = default!;
@@ -31,12 +33,21 @@ namespace Time_Plan.dk.Pages.Admin
             {
                 return NotFound();
             }
+            if (!User.IsInRole("Admin"))
+            {
+               if (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value != id.ToString())
+                {
+                    return RedirectToPage("/AShift/Oversigt");
+                }
+            }
+           
 
             var person =  await _context.Person.FirstOrDefaultAsync(m => m.ID == id);
             if (person == null)
             {
                 return NotFound();
             }
+            SSN = person.SocialSecurityNumber;
             Person = person;
             return Page();
         }
@@ -45,6 +56,7 @@ namespace Time_Plan.dk.Pages.Admin
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Person.SocialSecurityNumber = SSN;
             if (!ModelState.IsValid)
             {
                 return Page();

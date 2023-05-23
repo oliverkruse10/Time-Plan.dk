@@ -52,8 +52,11 @@ public class IndexModel : PageModel
         {
             var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.LønNr.ToString())
+            new Claim(ClaimTypes.Name, user.LønNr.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+
         };
+            
 
             if (user.Role == "Admin")
             {
