@@ -50,9 +50,9 @@ public class Person
     public int SocialSecurityNumber { get; set; }
 
 
-    [Display(Name = "Kørerkort")]
+    [Display(Name = "Kørekort")]
     public bool DriversLicense { get; set; }
-    [Display(Name = "Kørerkortmedtrailer")]
+    [Display(Name = "Kørekort med trailer")]
     public bool DriversLicenseWithTrailer { get; set; }
     
     public string? Password { get; set; }
