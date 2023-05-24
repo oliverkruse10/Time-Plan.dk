@@ -17,7 +17,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Person.Role" class="control-label"></label>
-                    <input asp-for="Person.Role" class="form-control" />
+                    <input asp-for="Person.Role" class="form-control" readonly />
                     <span asp-validation-for="Person.Role" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -57,12 +57,12 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Person.LønNr" class="control-label"></label>
-                    <input asp-for="Person.LønNr" class="form-control" />
+                    <input asp-for="Person.LønNr" class="form-control" readonly />
                     <span asp-validation-for="Person.LønNr" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Person.SocialSecurityNumber" class="control-label"></label>
-                    <input asp-for="Person.SocialSecurityNumber" class="form-control" />
+                    <input asp-for="Person.SocialSecurityNumber" type="text" class="form-control" readonly />
                     <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group">

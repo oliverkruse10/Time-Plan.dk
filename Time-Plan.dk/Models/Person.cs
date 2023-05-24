@@ -47,7 +47,7 @@ public class Person
     [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Venligst udfyld i korrekt format")]
     [Required(ErrorMessage = "CPR-nummer er nødvendigt at udfylde")]
     [Display(Name = "CPR-nummer")]
-    public int SocialSecurityNumber { get; set; }
+    public string SocialSecurityNumber { get; set; }
 
 
     [Display(Name = "Kørekort")]
@@ -69,7 +69,7 @@ public class Person
     }
 
     public Person(string role, string firstName, string lastName, string address, int phoneNumber,
-                  string email, int socialSecurityNumber, bool driversLicense, bool driversLicenseWithTrailer,
+                  string email, string socialSecurityNumber, bool driversLicense, bool driversLicenseWithTrailer,
                   string password, int lønNr)
     {
         Role = role;
@@ -100,7 +100,7 @@ public class Person
     
 
     public static void CreateEmployee(string firstName, string lastName, string address, int phoneNumber,
-                                      string email, int socialSecurityNumber, bool driversLicense,
+                                      string email, string socialSecurityNumber, bool driversLicense,
                                       bool driversLicenseWithTrailer, string password, int lønNr, string role)
     {
         //if (userRole != Role.Admin)
