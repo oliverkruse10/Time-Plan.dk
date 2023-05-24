@@ -66,7 +66,7 @@ namespace Time_Plan.dk.Pages.AShift
 
         public bool Vagt(int? medarbejdernr, DateTime kontroltid)
         {
-            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && e.StartTime.Date == kontroltid.Date) != null)
+            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && (e.StartTime.Date <= kontroltid.Date && e.EndTime.Date >= kontroltid.Date)) != null)
             {
                 return true;
             }
@@ -86,12 +86,12 @@ namespace Time_Plan.dk.Pages.AShift
 
         public List<Shift> GetShiftIDs(DateTime tid, int? medarbejdernr)
         {
-            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && ( e.StartTime.Date == tid.Date))!= null)
+            if (Shift.FirstOrDefault(e => e.MedarbejderLønNr == medarbejdernr && (e.StartTime.Date <= tid.Date && e.EndTime.Date >= tid.Date)) != null)
             {
                 List<Shift> shiftlist = new List<Shift>();
                 foreach (Shift shift in Shift)
                 {
-                    shiftlist = Shift.Where(e => e.MedarbejderLønNr == medarbejdernr && (e.StartTime.Date == tid.Date)).ToList();
+                    shiftlist = Shift.Where(e => e.MedarbejderLønNr == medarbejdernr && (e.StartTime.Date <= tid.Date && e.EndTime.Date >= tid.Date)).ToList();
                 }
                 return shiftlist;
 
