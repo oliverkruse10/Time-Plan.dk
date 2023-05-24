@@ -184,6 +184,13 @@ body {
         color: white;
             
     }
+.tg tr:nth-child(odd) {
+    background-color: #EEE;
+}
+
+.tg tr:nth-child(even) {
+    background-color: #fff;
+}
 
 
 .TidFrem/tilbage {
