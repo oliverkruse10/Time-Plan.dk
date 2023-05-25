@@ -6,162 +6,366 @@
 }
 
 
-@if (User.IsInRole("Admin"))
-{
-    <h2>Rediger</h2>
+<body>
+    <HTML>
 
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Person.Role" class="control-label"></label>
-                    <input asp-for="Person.Role" class="form-control" readonly />
-                    <span asp-validation-for="Person.Role" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.FirstName" class="control-label"></label>
-                    <input asp-for="Person.FirstName" class="form-control" />
-                    <span asp-validation-for="Person.FirstName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.LastName" class="control-label"></label>
-                    <input asp-for="Person.LastName" class="form-control" />
-                    <span asp-validation-for="Person.LastName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.Address" class="control-label"></label>
-                    <input asp-for="Person.Address" class="form-control" />
-                    <span asp-validation-for="Person.Address" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.PhoneNumber" class="control-label"></label>
-                    <input asp-for="Person.PhoneNumber" class="form-control" />
-                    <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.Email" class="control-label"></label>
-                    <input asp-for="Person.Email" class="form-control" />
-                    <span asp-validation-for="Person.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="Person.DriversLicense" /> @Html.DisplayNameFor(model => model.Person.DriversLicense)
-                    </label>
-                </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="Person.DriversLicenseWithTrailer" /> @Html.DisplayNameFor(model => model.Person.DriversLicenseWithTrailer)
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.LønNr" class="control-label"></label>
-                    <input asp-for="Person.LønNr" class="form-control" readonly />
-                    <span asp-validation-for="Person.LønNr" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.SocialSecurityNumber" class="control-label"></label>
-                    <input asp-for="Person.SocialSecurityNumber" type="text" class="form-control" readonly />
-                    <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.Password" class="control-label"></label>
-                    <button type="submit" class="btn btn-secondary" asp-page-handler="ResetPassword" asp-route-id="@Model.Person.ID">Reset Password</button>
-                </div>
-                <input type="hidden" asp-for="Person.ID" />
-                <div class="form-group">
-                    <input type="submit" value="Gem" class="btn btn-primary" />
-                </div>
-                <div>
-                    <input type="hidden" asp-for="Person.Password" value="@Model.Person.Password">
+    <head>
+        <style>
+            table, th, td {
+                text-align: left;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1vw;
+            }
+        </style>
+    </head>
 
+    <table style="width: 60%;
+        margin-left:auto;
+        margin-right:auto;
+        ">
+
+        @if (User.IsInRole("Admin"))
+        {
+            <!-- Før A -->
+            <tr>
+                <td colspan="5">
+                    <h5>Rediger medarbejder</h5>
+                </td>
+            </tr>
+
+
+                    <form method="post">
+
+            <tr>
+
+<div><input type="hidden" asp-for="Person.Password" value="@Model.Person.Password"/></div>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Person.LønNr" class="control-label"></label>
+                        <input asp-for="Person.LønNr" class="form-control" readonly />
+                        <span asp-validation-for="Person.LønNr" class="text-danger"></span>
+                    </div>
+                </td>
+
+
+            </tr>
+
+            <!-- A -->
+            <tr>
+
+                <div class="incorrect-input-danger">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 </div>
+
+                <td style="width:10%">
+                    <div class="incorrect-input-danger">
+                        <div class="form-group">
+                            <label asp-for="Person.FirstName" class="control-label"></label>
+                            <input asp-for="Person.FirstName" class="form-control" />
+                            <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="width:15%">
+                    <div class="incorrect-input-danger">
+                        <div class="form-group">
+                            <label asp-for="Person.LastName" class="control-label"></label>
+                            <input asp-for="Person.LastName" class="form-control" />
+                            <span asp-validation-for="Person.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="width:10%"></td>
+                <td style="width:5%">Nej</td>
+                <td style="width:5%">Ja</td>
+
+
+                <!-- B -->
+            <tr>
+                <td>
+                    <div class="incorrect-input-danger">
+                        <div class="form-group">
+                            <label asp-for="Person.SocialSecurityNumber" class="control-label"></label>
+                            <input asp-for="Person.SocialSecurityNumber" type="text" class="form-control" readonly />
+                            <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="incorrect-input-danger">
+                        <div class="form-group">
+                            <label asp-for="Person.PhoneNumber" class="control-label"></label>
+                            <input asp-for="Person.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+
+                <td>Admin</td>
+
+                <td>
+                    <input type="radio" asp-for="@Model.Person.Role" value="Medarbejder" />
+                    <label for="Nej"></label>
+                </td>
+
+                <td>
+                    <input type="radio" id="Ja" asp-for="@Model.Person.Role" value="Admin" />
+                    <label for="Ja"></label>
+                </td>
+            </tr>
+
+
+            <!-- C -->
+
+            <tr>
+                <td colspan="2">
+                    <div class="incorrect-input-danger">
+                        <div class="form-group">
+                            <label asp-for="Person.Address" class="control-label"></label>
+                            <input asp-for="Person.Address" class="form-control" />
+                            <span asp-validation-for="Person.Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    Kørekort
+                </td>
+
+                <td>
+                    <input type="radio" id=" Nej" asp-for="Person.DriversLicense" value="false" checked />
+                    <label for="Nej"></label>
+                </td>
+
+                <td>
+                    <input type="radio" id="Ja" asp-for="Person.DriversLicense" value="true" />
+                    <label for="Ja"></label>
+                </td>
+
+            </tr>
+
+
+            <!-- D -->
+
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <label asp-for="Person.Email" class="control-label"></label>
+                        <input asp-for="Person.Email" class="form-control" />
+                        <span asp-validation-for="Person.Email" class="text-danger"></span>
+                    </div>
+                </td>
+
+                <td>Med trailer</td>
+
+                <td>
+                    <input type="radio" id="Nej" asp-for="Person.DriversLicenseWithTrailer" value="false" checked />
+                    <label for="Nej"></label>
+                </td>
+
+                <td>
+                    <input type="radio" id="Ja" asp-for="Person.DriversLicenseWithTrailer" value="true" />
+                    <label for="Ja"></label>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Person.Password" class="control-label"></label>
+                        <button type="submit" class="btn btn-secondary" asp-page-handler="ResetPassword" asp-route-id="@Model.Person.ID">Reset Password</button>
+                    </div>
+                </td>
+
+                <td>
+                    <input type="hidden" asp-for="Person.ID" />
+                    <div class="form-group">
+                        <input type="submit" value="Gem" class="btn btn-primary" />
+                    </div>
+                </td>
+
+                <td>
+                            <div>
+                <a asp-page="./Index">Tilbage til liste</a>
+            </div>
+            </td>
+
+            </tr>
+
             </form>
-        </div>
-    </div>
+        }
 
-    <div>
-        <a asp-page="./Index">Tilbage til liste</a>
-    </div>
-}
+        else
+        {
+            <!-- Før A -->
+            <tr>
+                <td colspan="5">
+                    <h5>Rediger profil</h5>
+                </td>
+            </tr>
 
-else
-{
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Person.Role" class="control-label"></label>
-                    <input asp-for="Person.Role" class="form-control" readonly />
-                    <span asp-validation-for="Person.Role" class="text-danger"></span>
-                </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <form method="post">
+ 
+                        <tr>
+
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Person.LønNr" class="control-label"></label>
+                        <input asp-for="Person.LønNr" class="form-control" readonly />
+                        <span asp-validation-for="Person.LønNr" class="text-danger"></span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Person.Role" class="control-label"></label>
+                        <input asp-for="Person.Role" class="form-control" readonly />
+                        <span asp-validation-for="Person.Role" class="text-danger"></span>
+                    </div>
+                </td>
+            </tr>
+
+
+            <td style="width:10%">
                 <div class="form-group">
                     <label asp-for="Person.FirstName" class="control-label"></label>
                     <input asp-for="Person.FirstName" class="form-control" readonly />
                     <span asp-validation-for="Person.FirstName" class="text-danger"></span>
                 </div>
+            </td>
+
+            <td style="width:15%">
                 <div class="form-group">
                     <label asp-for="Person.LastName" class="control-label"></label>
                     <input asp-for="Person.LastName" class="form-control" readonly />
                     <span asp-validation-for="Person.LastName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Person.Address" class="control-label"></label>
-                    <input asp-for="Person.Address" class="form-control" />
-                    <span asp-validation-for="Person.Address" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.PhoneNumber" class="control-label"></label>
-                    <input asp-for="Person.PhoneNumber" class="form-control" />
-                    <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.Email" class="control-label"></label>
-                    <input asp-for="Person.Email" class="form-control" />
-                    <span asp-validation-for="Person.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" style="pointer-events:none; background-color:#eaecef" asp-for="Person.DriversLicense" readonly /> @Html.DisplayNameFor(model => model.Person.DriversLicense)
-                    </label>
-                </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" style="pointer-events:none; background-color:#eaecef" asp-for="Person.DriversLicenseWithTrailer" readonly /> @Html.DisplayNameFor(model => model.Person.DriversLicenseWithTrailer)
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.LønNr" class="control-label"></label>
-                    <input asp-for="Person.LønNr" class="form-control" readonly />
-                    <span asp-validation-for="Person.LønNr" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.SocialSecurityNumber" class="control-label"></label>
-                    <input asp-for="Person.SocialSecurityNumber" class="form-control" readonly />
-                    <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Person.Password" class="control-label"></label>
-                    <input asp-for="Person.Password" type="password" value="@Model.Person.Password" class="form-control" />
-                    <span asp-validation-for="Person.Password" class="text-danger"></span>
-                </div>
-                <input type="hidden" asp-for="Person.ID" />
-                <div class="form-group">
-                    <input type="submit" value="Gem" class="btn btn-primary" />
-                </div>
+            </td>
+
+            <td style="width:10%"></td>
+            <td style="width:5%">Nej</td>
+            <td style="width:5%">Ja</td>
+
+
+            <!-- B -->
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Person.SocialSecurityNumber" class="control-label"></label>
+                        <input asp-for="Person.SocialSecurityNumber" class="form-control" readonly />
+                        <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Person.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Person.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
+                    </div>
+                </td>
+
+                <td>
+                    Kørekort
+                </td>
+
+                <td>
+                    <input type="radio" style="pointer-events:none;" readonly id=" Nej" asp-for="Person.DriversLicense" value="false" checked />
+                    <label for="Nej"></label>
+                </td>
+
+
+                <td>
+                    <input type="radio" style="pointer-events:none;" readonly id="Ja" asp-for="Person.DriversLicense" value="true" />
+                    <label for="Ja"></label>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <label asp-for="Person.Address" class="control-label"></label>
+                        <input asp-for="Person.Address" class="form-control" />
+                        <span asp-validation-for="Person.Address" class="text-danger"></span>
+                    </div>
+                </td>
+
+                <td>Med trailer</td>
+
+                <td>
+                    <input type="radio" style="pointer-events:none;" readonly id="Nej" asp-for="Person.DriversLicenseWithTrailer" value="false" checked />
+                    <label for="Nej"></label>
+                </td>
+
+                <td>
+                    <input type="radio" style="pointer-events:none;" readonly id="Ja" asp-for="Person.DriversLicenseWithTrailer" value="true" />
+                    <label for="Ja"></label>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <label asp-for="Person.Email" class="control-label"></label>
+                        <input asp-for="Person.Email" class="form-control" />
+                        <span asp-validation-for="Person.Email" class="text-danger"></span>
+                    </div>
+                </td>
+            </tr>
+
+            <div class="form-group form-check"></div>
+
+            <tr>
+
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Person.Password" class="control-label"></label>
+                        <input asp-for="Person.Password" class="form-control" />
+                        <span asp-validation-for="Person.Password" class="text-danger"></span>
+                    </div>
+                </td>
+
+
+
+
+                <td align="right">
+                    <input type="hidden" asp-for="Person.ID" />
+                    <div class="form-group">
+                        <input type="submit" value="Gem" class="btn btn-primary" />
+                    </div>
+                </td>
+            </tr>
+
+
+
             </form>
-        </div>
-    </div>
 
-    <div>
-        <a asp-page="./Index">Tilbage til oversigt</a>
-    </div>
-}
+            </div>
+            </div>
 
+            <tr>
+                <td>
+                    <div>
+                        <a asp-page="./Index">Tilbage til oversigt</a>
+                    </div>
+                </td>
+            </tr>
 
+        }
+
+    </table>
+</HTML>
+</body>
 
 @section Scripts {
     @{
