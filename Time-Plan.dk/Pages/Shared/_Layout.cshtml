@@ -16,16 +16,16 @@
             <header>
                 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #e3ae45;">
                     <div class="container">
-                        <a class="navbar-brand" asp-area="" asp-page="/Index">
-                            <table>
-                                <tr>
-                                    <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
-                                </tr>
-                            </table>
-                        </a>
+
+                        <table>
+                            <tr>
+                                <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
+                            </tr>
+                        </table>
+
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -49,15 +49,15 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/Admin/Index">Oversigt</a></li>
-                                        <li><a class="dropdown-item" href="/Admin/Create">Opret Tidsregistrering</a></li>
+                                        <li><a class="dropdown-item" href="/Tidsregistrering/IkkeKlarEndnu">Oversigt</a></li>
+                                        <li><a class="dropdown-item" href="/Tidsregistrering/IkkeKlarEndnu">Opret Tidsregistrering</a></li>
                                     </ul>
                                 </li>
                             </ul>
                             <div class="login-bar">
 
                                 <a href="~/Profil" class="navbar-text" style="margin-right: 10px;">Min Profil</a>
-                                </div>
+                            </div>
                             <div class="login-bar">
                                 <a href="/LogOut/LogOutPage" class="login-link">Log ud</a>
 
@@ -72,16 +72,16 @@
             <header>
                 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light fixed border-bottom box-shadow mb-3" style="background-color: #e3ae45;">
                     <div class="container">
-                        <a class="navbar-brand" asp-area="" asp-page="/Index">
-                            <table>
-                                <tr>
-                                    <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
-                                </tr>
-                            </table>
-                        </a>
+
+                        <table>
+                            <tr>
+                                <td style="text-align: center"><span class="black">let</span><span class="white">lej.dk</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><span class="white">Time</span><span class="black">-plan.dk</span></td>
+                            </tr>
+                        </table>
+
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -94,11 +94,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/Admin/Index">Medarbejdere</a>
                                 </li>
-                                 
-                               
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tidsregistrering</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Tidsregistrering/IkkeKlarEndnu">Oversigt</a></li>
+                                        <li><a class="dropdown-item" href="/Tidsregistrering/IkkeKlarEndnu">Opret Tidsregistrering</a></li>
+                                    </ul>
+                                </li>
+
+
                             </ul>
+
                             <div class="login-bar">
-                                <a href="~/Profil" class="navbar-text" style="margin-right: 10px;">Min Profil</a>
+                                <a href="~/Account/Profil" class="navbar-text" style="margin-right: 10px;">Min Profil</a>
                                 <a href="/LogOut/LogOutPage" class="login-link">Log ud</a>
 
                             </div>
@@ -108,7 +116,7 @@
             </header>
         }
 
-        
+
     }
 
     <div class="container">

@@ -95,37 +95,7 @@ public class Person
         
     }
 
-    private static List<Person> employees = new List<Person>();
-
-    
-
-    public static void CreateEmployee(string firstName, string lastName, string address, int phoneNumber,
-                                      string email, string socialSecurityNumber, bool driversLicense,
-                                      bool driversLicenseWithTrailer, string password, int lønNr, string role)
-    {
-        //if (userRole != Role.Admin)
-        //{
-        //    Console.WriteLine("Error: Only users with the Admin role can create new employees.");
-        //    return;
-        //}
-
-        Person newEmployee = new Person
-        {
-            Role = role,
-            FirstName = firstName,
-            LastName = lastName,
-            Address = address,
-            PhoneNumber = phoneNumber,
-            Email = email,
-            SocialSecurityNumber = socialSecurityNumber,
-            DriversLicense = driversLicense,
-            DriversLicenseWithTrailer = driversLicenseWithTrailer,
-            Password = password,
-            LønNr = lønNr
-        };
-
-        employees.Add(newEmployee);
-    }
+   
 }
 
 

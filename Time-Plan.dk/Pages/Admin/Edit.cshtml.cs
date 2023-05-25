@@ -33,6 +33,7 @@ namespace Time_Plan.dk.Pages.Admin
             {
                 return NotFound();
             }
+
             if (!User.IsInRole("Admin"))
             {
                if (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value != id.ToString())

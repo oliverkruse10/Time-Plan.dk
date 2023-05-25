@@ -28,10 +28,7 @@ public class Shift
         Location = location;
     }
 
-    //public void ResetLønNr()
-    //{
-    //    MedarbejderLønNr == default(int?);
-    //}
+    
     
     public Shift()
     {

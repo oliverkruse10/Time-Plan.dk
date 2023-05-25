@@ -18,10 +18,6 @@ public class LogOutPage : PageModel
         return RedirectToPage("/Index");
     }
 
-    
-
-
-
 
 }
 
