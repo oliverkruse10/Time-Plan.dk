@@ -75,7 +75,7 @@ public class IndexModel : PageModel
         }
         else
         {
-            ViewData["Message"] = "Forkert løn nummer, password eller rolle";
+            ViewData["Message"] = "Forkert lønnummer og/eller password";
             return Page();
         }
     }
