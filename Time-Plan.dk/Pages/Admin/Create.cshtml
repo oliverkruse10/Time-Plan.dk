@@ -4,260 +4,241 @@
 
 
 @{
-
     ViewData["Title"] = "Create";
-
 }
 
-
-
-
-
-
 <body>
-
-
     <HTML>
 
-
     <head>
-
         <style>
-
             table, th, td {
                 text-align: left;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 1vw;
             }
-
         </style>
-
     </head>
 
 
     <form method="post">
-
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
         <table style="width: 60%;
-
         margin-left:auto;
-
         margin-right:auto;
+        ">
 
-        "
 
+            <!-- Før A -->
 
-<!-- Før A -->
+            <tr>
 
-<tr>
+                <td colspan="5">
 
-<td colspan="5">
+                    <h5>Opret medarbejder</h5>
 
-<h5>Opret medarbejder</h5>
+                </td>
 
-</td>
+            </tr>
 
-</tr>
 
+            <!-- A -->
 
-<!-- A -->
+            <td style="width:10%">
 
-<td style="width:10%">
+                <div class="incorrect-input-danger">
 
-<div class="incorrect-input-danger">
+                    <input type="text" class="form-control" placeholder="Fornavn" size="1" asp-for="Person.FirstName" />
 
-<input type="text" class="form-control" placeholder="Fornavn" size="1" asp-for="Person.FirstName" />
+                    <span asp-validation-for="Person.FirstName" class="text-danger"></span>
 
-<span asp-validation-for="Person.FirstName" class="text-danger"></span>
+                </div>
 
-</div>
+            </td>
 
-</td>
 
+            <td style="width:15%">
 
-<td style="width:15%">
+                <div class="incorrect-input-danger">
 
-<div class="incorrect-input-danger">
+                    <input type="text" class="form-control" placeholder="Efternavn" size="15" asp-for="Person.LastName" />
 
-<input type="text" class="form-control" placeholder="Efternavn" size="15" asp-for="Person.LastName" />
+                    <span asp-validation-for="Person.LastName" class="text-danger"></span>
 
-<span asp-validation-for="Person.LastName" class="text-danger"></span>
+                </div>
 
-</div>
+            </td>
 
-</td>
 
+            <td style="width:10%"></td>
 
-<td style="width:10%"></td>
+            <td style="width:5%">Nej</td>
 
-<td style="width:5%">Nej</td>
+            <td style="width:5%">Ja</td>
 
-<td style="width:5%">Ja</td>
 
 
 
+            <!-- B -->
 
-<!-- B -->
+            <tr>
 
-<tr>
 
+                <td>
 
-<td>
+                    <div class="incorrect-input-danger">
 
-<div class="incorrect-input-danger">
+                        <input type="text" class="form-control" placeholder="CPR" size="2" asp-for="Person.SocialSecurityNumber" />
 
-<input type="text" class="form-control" placeholder="CPR" size="2" asp-for="Person.SocialSecurityNumber" />
+                        <span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
 
-<span asp-validation-for="Person.SocialSecurityNumber" class="text-danger"></span>
+                    </div>
 
-</div>
+                </td>
 
-</td>
+                <td>
 
-<td>
+                    <div class="incorrect-input-danger">
 
-<div class="incorrect-input-danger">
+                        <input type="text" class="form-control" placeholder="Telefon" size="2" asp-for="Person.PhoneNumber" />
 
-<input type="text" class="form-control" placeholder="Telefon" size="2" asp-for="Person.PhoneNumber" />
+                        <span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
 
-<span asp-validation-for="Person.PhoneNumber" class="text-danger"></span>
+                    </div>
 
-</div>
 
+                <td>Admin</td>
 
-<td>Admin</td>
 
+                <td>
 
-<td>
+                    <input type="radio" id="Nej" asp-for="Person.Role" value="Medarbejder" checked />
 
-<input type="radio" id="Nej" asp-for="Person.Role" value="Medarbejder" checked />
+                    <label for="Nej"></label>
 
-<label for="Nej"></label>
+                </td>
 
-</td>
 
+                <td>
 
-<td>
+                    <input type="radio" id="Ja" asp-for="Person.Role" value="Admin" />
 
-<input type="radio" id="Ja" asp-for="Person.Role" value="Admin" />
+                    <label for="Ja"></label>
 
-<label for="Ja"></label>
+                </td>
 
-</td>
 
 
 
 
 
+                <!-- C -->
 
-<!-- C -->
+            <tr>
 
-<tr>
 
+                <td colspan="2">
 
-<td colspan="2">
+                    <div class="incorrect-input-danger">
 
-    <div class="incorrect-input-danger">
+                        <input type="text" class="form-control" placeholder="Adresse" size="30" asp-for="Person.Address" />
 
-<input type="text" class="form-control" placeholder="Adresse" size="30" asp-for="Person.Address" />
+                        <span asp-validation-for="Person.Address" class="text-danger"></span>
 
-<span asp-validation-for="Person.Address" class="text-danger"></span>
+                    </div>
 
-</div>
+                </td>
 
-</td>
 
+                <td>Kørekort</td>
 
-<td>Kørekort</td>
 
+                <td>
 
-<td>
+                    <input type="radio" id="Nej" asp-for="Person.DriversLicense" value="false" checked />
 
-<input type="radio" id="Nej" asp-for="Person.DriversLicense" value="false" checked />
+                    <label for="Nej"></label>
 
-<label for="Nej"></label>
+                </td>
 
-</td>
+                <td>
 
-<td>
+                    <input type="radio" id="Ja" asp-for="Person.DriversLicense" value="true" />
 
-<input type="radio" id="Ja" asp-for="Person.DriversLicense" value="true" />
+                    <label for="Ja"></label>
 
-<label for="Ja"></label>
+                </td>
 
-</td>
 
+                <!-- D -->
 
-<!-- D -->
+            <tr>
 
-<tr>
+                <td colspan="2">
 
-<td colspan="2">
+                    <div class="incorrect-input-danger">
 
-<div class="incorrect-input-danger">
+                        <input type="text" class="form-control" placeholder="Email" size="25" asp-for="Person.Email" />
 
-<input type="text" class="form-control" placeholder="Email" size="25" asp-for="Person.Email" />
+                        <span asp-validation-for="Person.Email" class="text-danger"></span>
 
-<span asp-validation-for="Person.Email" class="text-danger"></span>
+                    </div>
 
-</div>
+                </td>
 
-</td>
 
+                <td>Med trailer</td>
 
-<td>Med trailer</td>
+                <td>
 
-<td>
+                    <input type="radio" id="Nej" asp-for="Person.DriversLicenseWithTrailer" value="false" checked />
 
-<input type="radio" id="Nej" asp-for="Person.DriversLicenseWithTrailer" value="false" checked />
+                    <label for="Nej"></label>
 
-<label for="Nej"></label>
+                </td>
 
-</td>
+                <td>
 
-<td>
+                    <input type="radio" id="Ja" asp-for="Person.DriversLicenseWithTrailer" value="true" />
 
-<input type="radio" id="Ja" asp-for="Person.DriversLicenseWithTrailer" value="true" />
+                    <label for="Ja"></label>
 
-<label for="Ja"></label>
+                </td>
 
-</td>
 
+                <!-- E -->
 
-<!-- E -->
+            <tr>
 
-        <tr>
+                <td>
 
-        <td>
+                    <div class="incorrect-input-danger">
 
-            <div class="incorrect-input-danger">
+                        <input type="text" class="form-control" placeholder="Lønnr" id="Lønnr" size="12" asp-for="Person.LønNr" asp-for="Person.Password" />
 
-        <input type="text" class="form-control" placeholder="Lønnr" id="Lønnr" size="12" asp-for="Person.LønNr" asp-for="Person.Password" />
+                        <span asp-validation-for="Person.LønNr" class="text-danger"></span>
 
-        <span asp-validation-for="Person.LønNr" class="text-danger"></span>
+                    </div>
 
-        </div>
+                </td>
 
-        </td>
 
+                <td></td>
 
-<td></td>
+                <td></td>
 
-<td></td>
 
+                <TD colspan="2">
 
-<TD colspan="2">
+                    <input type="submit" value="Opret" class="btn btn-primary" />
 
-<input type="submit" value="Opret" class="btn btn-primary" />
+                </TD>
 
-</TD>
 
+            </tr>
 
-</tr>
-
-</table>
+        </table>
 
 
     </form>
