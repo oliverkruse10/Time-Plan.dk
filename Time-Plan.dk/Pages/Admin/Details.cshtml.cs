@@ -38,5 +38,20 @@ namespace Time_Plan.dk.Pages.Admin
             }
             return Page();
         }
+
+        public IActionResult OnPostResetPassword(int id)
+        {
+            var person = _context.Person.FirstOrDefault(p => p.ID == id);
+            if (person != null)
+            {
+                person.SetDefaultPassword();
+
+                _context.SaveChanges();
+
+                return RedirectToPage("./Index");
+            }
+
+            return Page();
+        }
     }
 }

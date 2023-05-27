@@ -54,7 +54,7 @@ namespace Time_Plan.dk.Pages.Admin
                 return Page();
             }
 
-            // If neither duplicate SSN nor duplicate LønNr is found
+            
             _context.Person.Add(Person);
             await _context.SaveChangesAsync();
 

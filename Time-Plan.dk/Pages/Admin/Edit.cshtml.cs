@@ -27,6 +27,9 @@ namespace Time_Plan.dk.Pages.Admin
         [BindProperty]
         public Person Person { get; set; } = default!;
 
+        public int KontrolNr { get; set; }
+
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Person == null)
@@ -50,11 +53,11 @@ namespace Time_Plan.dk.Pages.Admin
             }
             
             Person = person;
+            KontrolNr = person.LønNr;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+       
         public async Task<IActionResult> OnPostAsync()
         {
            
@@ -62,7 +65,15 @@ namespace Time_Plan.dk.Pages.Admin
             {
                 return Page();
             }
-
+            
+            
+                if (_context.Person.Any(p => p.LønNr == Person.LønNr && p.ID!=Person.ID))
+                {
+                    ModelState.AddModelError("DuplicateLønNr", "Dette lønnummer er allerede registreret");
+                    return Page();
+                }
+            
+            
             _context.Attach(Person).State = EntityState.Modified;
 
             try

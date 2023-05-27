@@ -70,13 +70,16 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Person.LønNr)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Person.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Person.Password)
-        </dd>
+            @if (User.IsInRole("Admin"))
+            {
+               <td>
+                    <div class="form-group">
+                        
+                        <button type="submit" class="btn btn-secondary" asp-page-handler="ResetPassword" asp-route-id="@Model.Person.ID">Reset Password</button>
+                    </div>
+                </td> 
+            }
+            
     </dl>
 </div>
 <div>

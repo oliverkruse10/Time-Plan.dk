@@ -42,7 +42,7 @@
                 <td>
                     <div class="form-group">
                         <label asp-for="Person.LønNr" class="control-label"></label>
-                        <input asp-for="Person.LønNr" class="form-control" readonly />
+                        <input asp-for="Person.LønNr" class="form-control" />
                         <span asp-validation-for="Person.LønNr" class="text-danger"></span>
                     </div>
                 </td>
@@ -330,7 +330,7 @@
                 <td>
                     <div class="form-group">
                         <label asp-for="Person.Password" class="control-label"></label>
-                        <input asp-for="Person.Password" class="form-control" />
+                        <input asp-for="Person.Password" class="form-control" type="password" value="@Model.Person.Password" />
                         <span asp-validation-for="Person.Password" class="text-danger"></span>
                     </div>
                 </td>
@@ -353,19 +353,30 @@
             </div>
             </div>
 
+
             <tr>
                 <td>
                     <div>
                         <a asp-page="./Index">Tilbage til oversigt</a>
+
                     </div>
                 </td>
             </tr>
 
         }
 
+        
+
     </table>
+
+
 </HTML>
+
+<h3 align="center">@Html.ValidationMessage("DuplicateLønNr")</h3>
+
 </body>
+
+
 
 @section Scripts {
     @{
