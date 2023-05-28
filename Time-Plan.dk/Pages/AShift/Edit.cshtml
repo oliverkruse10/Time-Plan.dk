@@ -5,52 +5,110 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Rediger vagt</h2>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Shift.ShiftId" />
+<body>
+    <HTML>
 
-            <select asp-for="Shift.MedarbejderLønNr" class="form-select" asp-items="@(new SelectList(Model.EmployeeDict,"Key", "Value"))"><option value="Key" selected>---Vælg Medarbejder---</option></select>
+    <head>
+        <style>
+            table, th, td {
+                text-align: left;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1vw;
+            }
+        </style>
+    </head>
 
-            <div class="form-group">
-                <label asp-for="Shift.StartTime" class="control-label"></label>
-                <input asp-for="Shift.StartTime" class="form-control" />
-                <span asp-validation-for="Shift.StartTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Shift.EndTime" class="control-label"></label>
-                <input asp-for="Shift.EndTime" class="form-control" />
-                <span asp-validation-for="Shift.EndTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Shift.TypeofJob" class="control-label"></label>
-                <input asp-for="Shift.TypeofJob" class="form-control" />
-                <span asp-validation-for="Shift.TypeofJob" class="text-danger"></span>
-            </div>
+    <table style="width: 60%;
+        margin-left:auto;
+        margin-right:auto;
+        ">
+
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+
+        <tr><td></td></tr>
+
+        <tr>
+            <td>
+                <h4>Rediger vagt</h4>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Shift.ShiftId" />
+
+                <select asp-for="Shift.MedarbejderLønNr" class="form-select" asp-items="@(new SelectList(Model.EmployeeDict,"Key", "Value"))"><option value="Key" selected>---Vælg Medarbejder---</option></select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label asp-for="Shift.StartTime" class="control-label"></label>
+                    <input asp-for="Shift.StartTime" class="form-control" />
+                    <span asp-validation-for="Shift.StartTime" class="text-danger"></span>
+                </div>
+            </td>
+
+            <td>
+                <div class="form-group">
+                    <label asp-for="Shift.EndTime" class="control-label"></label>
+                    <input asp-for="Shift.EndTime" class="form-control" />
+                    <span asp-validation-for="Shift.EndTime" class="text-danger"></span>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label asp-for="Shift.TypeofJob" class="control-label"></label>
+                    <input asp-for="Shift.TypeofJob" class="form-control" />
+                    <span asp-validation-for="Shift.TypeofJob" class="text-danger"></span>
+                </div>
+            </td>
+
+            <td
             <div class="form-group">
                 <label asp-for="Shift.Location" class="control-label"></label>
                 <input asp-for="Shift.Location" class="form-control" />
                 <span asp-validation-for="Shift.Location" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Gem" class="btn btn-primary" />
-            </div>
-        </form>
+            </td>
+        </tr>
 
-        <h3 align="center" "></>@Html.ValidationMessage("Planlægningsfejl")</h3>
-        <h3 align="center" "></>@Html.ValidationMessage("erroneoustime")</h3>
-        
-    </div>
-</div>
+        <tr>
+            <td>
+                <div>
+                    <a href="./Oversigt">Tilbage til oversigt</a>
+                </div>
+            </td>
+            <td align="right">
+                <div class="form-group">
+                    <input type="submit" value="Gem" class="btn btn-primary" />
+                </div>
+                </form>
+            </td>
+        </tr>
 
-<div>
-    <a href="./Oversigt">Tilbage til oversigt</a>
-</div>
+        <tr>
+            <td colspan="2">
+                <h4 align="center" "></>@Html.ValidationMessage("Planlægningsfejl")</h4>
+                <h4 align="center" "></>@Html.ValidationMessage("erroneoustime")</h4>
+                </div>
+                </div>
+            </td>
+        </tr>
+</HTML>
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

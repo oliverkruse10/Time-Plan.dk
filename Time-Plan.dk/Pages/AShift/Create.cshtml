@@ -5,53 +5,113 @@
 @{
     ViewData["Title"] = "Create";
 }
+<body>
+    <HTML>
 
-<h1>Opret vagt</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <select asp-for="Shift.MedarbejderLønNr" class="form-select" asp-items="@(new SelectList(Model.EmployeeDict,"Key", "Value"))"><option value="Key" selected disabled>---Vælg Medarbejder---</option></select>
+    <head>
+        <style>
+            table, th, td {
+                text-align: left;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1vw;
+            }
+        </style>
+    </head>
 
-          
+    <table style="width: 60%;
+        margin-left:auto;
+        margin-right:auto;
+        ">
 
-            <div class="form-group">
-                <label asp-for="Shift.StartTime" class="control-label"></label>
-                <input asp-for="Shift.StartTime" class="form-control" />
-                <span asp-validation-for="Shift.StartTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Shift.EndTime" class="control-label"></label>
-                <input asp-for="Shift.EndTime" class="form-control" />
-                <span asp-validation-for="Shift.EndTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Shift.TypeofJob" class="control-label"></label>
-                <input asp-for="Shift.TypeofJob" class="form-control" />
-                <span asp-validation-for="Shift.TypeofJob" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Shift.Location" class="control-label"></label>
-                <input asp-for="Shift.Location" class="form-control" />
-                <span asp-validation-for="Shift.Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Opret" class="btn btn-primary" />
-            </div>
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
 
-        </form> 
+
+        <tr><td></td></tr>
+
+        <tr>
+            <td>
+                <h4>Opret vagt</h4>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <select asp-for="Shift.MedarbejderLønNr" class="form-select" asp-items="@(new SelectList(Model.EmployeeDict,"Key", "Value"))"><option value="Key" selected disabled>---Vælg Medarbejder---</option></select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label asp-for="Shift.StartTime" class="control-label"></label>
+                    <input asp-for="Shift.StartTime" class="form-control" />
+                    <span asp-validation-for="Shift.StartTime" class="text-danger"></span>
+                </div>
+            </td>
+
+            <td>
+                <div class="form-group">
+                    <label asp-for="Shift.EndTime" class="control-label"></label>
+                    <input asp-for="Shift.EndTime" class="form-control" />
+                    <span asp-validation-for="Shift.EndTime" class="text-danger"></span>
+                </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+        <div class="form-group">
+            <label asp-for="Shift.TypeofJob" class="control-label"></label>
+            <input asp-for="Shift.TypeofJob" class="form-control" />
+            <span asp-validation-for="Shift.TypeofJob" class="text-danger"></span>
+        </div>
+        </td>
+
+        <td>
+        <div class="form-group">
+            <label asp-for="Shift.Location" class="control-label"></label>
+            <input asp-for="Shift.Location" class="form-control" />
+            <span asp-validation-for="Shift.Location" class="text-danger"></span>
+        </div>
+</td>
+</tr>
+
+<tr>
+        <td>
+            <div>
+                <a href="./Oversigt">Tilbage til oversigt</a>
+            </div>
+        </td>
+
+<td>
+        <div class="form-group">
+            <input type="submit" value="Opret" class="btn btn-primary" />
+        </div>
+        </td>
+
+        </form>
         <h3 align="center" "></>@Html.ValidationMessage("Planlægningsfejl")</h3>
         <h3 align="center" "></>@Html.ValidationMessage("erroneoustime")</h3>
         </div>
         </div>
 
 
-<div>
-    <a href="./Oversigt">Tilbage til oversigt</a>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        </td>
+
+        </tr>
+</HTML>
+</body>
+
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
