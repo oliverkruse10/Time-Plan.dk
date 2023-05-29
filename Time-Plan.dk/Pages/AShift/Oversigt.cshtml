@@ -5,12 +5,11 @@
 
 @if (User.IsInRole("Admin"))
 {
-    <a href="~/AShift/Index">Vis liste oversigt</a>
+    <a href="~/AShift/Index">Vis oversigt som liste</a>
 }
 <table class="tg">
     <thead>
         <tr>
-
             <th class="tg-lboi">
                 <table>
                     <tr>
@@ -24,6 +23,7 @@
                     </tr>
                 </table>
             </th>
+ 
             @for (int y = 0; y <= 13; y++)
             {
                 <th class="tg-0pky">@Model.date.AddDays(y).ToString("dd/MM")</th>
@@ -79,7 +79,6 @@
                                                 </td>
                                             </tr>
                                         }
-
                                     }
 
                                 }
@@ -100,7 +99,7 @@
             </tr>
         }
         <tr class="tg">
-            <td class="tg-0lax" style="color:black">Ledige Vagter</td>
+            <td class="tg-0lax" style="color:black">Ledige vagter</td>
             @for (int i = 0; i <= 13; i++)
             {
 
@@ -157,12 +156,6 @@
                 {
                     <td> </td>
                 }
-
-
-
-
-
-
             }
         </tr>
     </tbody>
