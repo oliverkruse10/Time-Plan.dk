@@ -27,7 +27,7 @@ namespace Time_Plan.dk.Pages.Admin
         [BindProperty]
         public Person Person { get; set; } = default!;
 
-        public int KontrolNr { get; set; }
+        
 
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -36,7 +36,7 @@ namespace Time_Plan.dk.Pages.Admin
             {
                 return NotFound();
             }
-
+            
             if (!User.IsInRole("Admin"))
             {
                if (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value != id.ToString())
@@ -53,7 +53,6 @@ namespace Time_Plan.dk.Pages.Admin
             }
             
             Person = person;
-            KontrolNr = person.LønNr;
             return Page();
         }
 

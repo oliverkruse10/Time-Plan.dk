@@ -34,11 +34,10 @@
             </tr>
 
 
-                    <form method="post">
+            <form method="post">
 
             <tr>
-
-<div><input type="hidden" asp-for="Person.Password" value="@Model.Person.Password"/></div>
+                    
                 <td>
                     <div class="form-group">
                         <label asp-for="Person.LønNr" class="control-label"></label>
@@ -177,9 +176,21 @@
 
                 <td>
                     <div class="form-group">
-                        
+
                         <button type="submit" class="btn btn-secondary" asp-page-handler="ResetPassword" asp-route-id="@Model.Person.ID">Reset Password</button>
                     </div>
+                </td>
+
+                <td>
+                            @if (Model.Person.Role=="Admin")
+                            {
+                        <div class="form-group">
+                            <label asp-for="Person.Password" class="control-label"></label>
+                            <input asp-for="Person.Password" class="form-control" type="password" value="@Model.Person.Password" />
+                            <span asp-validation-for="Person.Password" class="text-danger"></span>
+                        </div>
+                            }
+
                 </td>
 
                 <td>
@@ -190,10 +201,10 @@
                 </td>
 
                 <td>
-                            <div>
-                <a asp-page="./Index">Tilbage til liste</a>
-            </div>
-            </td>
+                    <div>
+                        <a asp-page="./Index">Tilbage til liste</a>
+                    </div>
+                </td>
 
             </tr>
 
@@ -212,8 +223,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <form method="post">
- 
-                        <tr>
+
+            <tr>
 
                 <td>
                     <div class="form-group">
@@ -365,7 +376,7 @@
 
         }
 
-        
+
 
     </table>
 
